@@ -1,0 +1,792 @@
+[
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app",
+            "isDirectory": true,
+            "size": 96,
+            "modifiedTime": 1557875498039,
+            "changeTime": 1557875498039,
+            "contentHash": "b28b7af69320201d1cf206ebf28373980add1451",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false,
+            "isArtifactRoot": true
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main",
+            "isDirectory": true,
+            "size": 96,
+            "modifiedTime": 1557875498039,
+            "changeTime": 1557875498039,
+            "contentHash": "7505d64a54e061b7acd54ccd58b49dc43500b635",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default",
+            "isDirectory": true,
+            "size": 320,
+            "modifiedTime": 1557894550500,
+            "changeTime": 1557894550500,
+            "contentHash": "a19871c90018422cec785c41f515ec638192a6a1",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/aura",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/aura",
+            "isDirectory": true,
+            "size": 64,
+            "modifiedTime": 1557875498039,
+            "changeTime": 1557875498039,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes",
+            "isDirectory": true,
+            "size": 320,
+            "modifiedTime": 1557976212527,
+            "changeTime": 1557976212527,
+            "contentHash": "f711d1433e37e8687756f3a0f9d57e8c8c711446",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/lwc",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/lwc",
+            "isDirectory": true,
+            "size": 128,
+            "modifiedTime": 1557875513690,
+            "changeTime": 1557875513690,
+            "contentHash": "a973ac1b5be0e216b2a2db1b82ae5ba97f4086f4",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector",
+            "isDirectory": true,
+            "size": 288,
+            "modifiedTime": 1557875513695,
+            "changeTime": 1557875513695,
+            "contentHash": "482aba1731d0a586e52ba05892f68b26d69ba4fe",
+            "isMetadataFile": false,
+            "state": "u",
+            "isWorkspace": true,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Custom%3A Sales Profile.profile-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Custom%3A Sales Profile.profile-meta.xml",
+            "isDirectory": false,
+            "size": 7203,
+            "modifiedTime": 1557894550431,
+            "changeTime": 1557894550431,
+            "contentHash": "1a030b55ed24ec91e834e8faeaa4eff102ffd604",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Custom%3A Marketing Profile.profile-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Custom%3A Marketing Profile.profile-meta.xml",
+            "isDirectory": false,
+            "size": 7203,
+            "modifiedTime": 1557894550442,
+            "changeTime": 1557894550442,
+            "contentHash": "1a030b55ed24ec91e834e8faeaa4eff102ffd604",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Custom%3A Support Profile.profile-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Custom%3A Support Profile.profile-meta.xml",
+            "isDirectory": false,
+            "size": 7541,
+            "modifiedTime": 1557894550459,
+            "changeTime": 1557894550459,
+            "contentHash": "4b6f64fe49a9b9b610f6a16c3b006b5e6cd27eca",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Admin.profile-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles/Admin.profile-meta.xml",
+            "isDirectory": false,
+            "size": 21692,
+            "modifiedTime": 1557974875668,
+            "changeTime": 1557974875668,
+            "contentHash": "1dd5c51ebcb3edc3cad99625a128152c8eff29c7",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects",
+            "isDirectory": true,
+            "size": 128,
+            "modifiedTime": 1557974905582,
+            "changeTime": 1557974905582,
+            "contentHash": "637425e82de7e5ddc99f06501350e00f53d95303",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/layouts",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/layouts",
+            "isDirectory": true,
+            "size": 128,
+            "modifiedTime": 1557974875686,
+            "changeTime": 1557974875686,
+            "contentHash": "d875de71cf5420f5a9f1a513c7cd14903f3b687b",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/profiles",
+            "isDirectory": true,
+            "size": 192,
+            "modifiedTime": 1557891987655,
+            "changeTime": 1557891987655,
+            "contentHash": "9c367b0e719eb8c48c5b0d9cbfb5f580a4bd6717",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/DSD_Data_Skew_Result__c.object-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/DSD_Data_Skew_Result__c.object-meta.xml",
+            "isDirectory": false,
+            "size": 2210,
+            "modifiedTime": 1557892597135,
+            "changeTime": 1557892597135,
+            "contentHash": "ca52a7df957a8f3297f3a2d83e0f20f6af6d8238",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Child_Object_Name__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Child_Object_Name__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 631,
+            "modifiedTime": 1557892597136,
+            "changeTime": 1557892597136,
+            "contentHash": "d6cbb25df37a4bec7771a4164aff421fb173bee6",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Parent_Object_Name__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Parent_Object_Name__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 635,
+            "modifiedTime": 1557892597136,
+            "changeTime": 1557892597136,
+            "contentHash": "577ef6590d511a36cd521bdc846e0c2ce1256332",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Reporting_Threshold__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Reporting_Threshold__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 718,
+            "modifiedTime": 1557892597136,
+            "changeTime": 1557892597136,
+            "contentHash": "7f9de9ca87b0299a71ab78c9a18fa1947a2dfc0c",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skew_Record_Count__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skew_Record_Count__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 610,
+            "modifiedTime": 1557892597137,
+            "changeTime": 1557892597137,
+            "contentHash": "0ea307f6f89b5c8f18a220bc67e250827d2df686",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skew_Threshold__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skew_Threshold__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 664,
+            "modifiedTime": 1557892597137,
+            "changeTime": 1557892597137,
+            "contentHash": "8fcb908bbb2c3702d219bc4028125accbc425035",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skew_Type__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skew_Type__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 486,
+            "modifiedTime": 1557892597137,
+            "changeTime": 1557892597137,
+            "contentHash": "cddf6d7ec02116322ca2e57f476029079863dfe6",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skewed_Record_ID__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields/DSD_Skewed_Record_ID__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 543,
+            "modifiedTime": 1557892597138,
+            "changeTime": 1557892597138,
+            "contentHash": "78c43c7c494475e7049485756fa061e4c40991b3",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/layouts/DSD_Data_Skew_Result__c-Data Skew Result Layout.layout-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/layouts/DSD_Data_Skew_Result__c-Data Skew Result Layout.layout-meta.xml",
+            "isDirectory": false,
+            "size": 2995,
+            "modifiedTime": 1557892597147,
+            "changeTime": 1557892597147,
+            "contentHash": "41593ffdb280abcdb33ebab0c1f9df09e6b3cb44",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Data_Skew_Result__c-en_US.objectTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Data_Skew_Result__c-en_US.objectTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 391,
+            "modifiedTime": 1557892597153,
+            "changeTime": 1557892597153,
+            "contentHash": "31f28419775f93aef1414f2caef964398ac56562",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Child_Object_Name__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Child_Object_Name__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 345,
+            "modifiedTime": 1557892597154,
+            "changeTime": 1557892597154,
+            "contentHash": "b3a9e52e8c013a07a0507a879bef791d411fea28",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Parent_Object_Name__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Parent_Object_Name__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 348,
+            "modifiedTime": 1557892597154,
+            "changeTime": 1557892597154,
+            "contentHash": "0f287ddf1ca99fb88cca0c8df25128375792c401",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Reporting_Threshold__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Reporting_Threshold__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 373,
+            "modifiedTime": 1557892597154,
+            "changeTime": 1557892597154,
+            "contentHash": "d9708b6cff1aeee290740c04fa4d8a97cb40f43f",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skew_Record_Count__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skew_Record_Count__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 317,
+            "modifiedTime": 1557892597155,
+            "changeTime": 1557892597155,
+            "contentHash": "f0d08b96edbe2b2d789b81e5e62259cd977200b6",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skew_Threshold__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skew_Threshold__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 341,
+            "modifiedTime": 1557892597155,
+            "changeTime": 1557892597155,
+            "contentHash": "0281619726d106dccbe7027f71ffdc8507aedb62",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skew_Type__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skew_Type__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 261,
+            "modifiedTime": 1557892597156,
+            "changeTime": 1557892597156,
+            "contentHash": "02f16240f8ca2ce54fa2ed8f2a46cd2cbde18930",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skewed_Record_ID__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US/DSD_Skewed_Record_ID__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 297,
+            "modifiedTime": 1557892597156,
+            "changeTime": 1557892597156,
+            "contentHash": "e8123b16cca2d62ca62bc66634e04cc4a945d7f8",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c",
+            "isDirectory": true,
+            "size": 128,
+            "modifiedTime": 1557892597135,
+            "changeTime": 1557892597135,
+            "contentHash": "d18489fca1dcc8d8976b45e6dcffd27d9114e3b5",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Result__c/fields",
+            "isDirectory": true,
+            "size": 288,
+            "modifiedTime": 1557892597138,
+            "changeTime": 1557892597138,
+            "contentHash": "403853a640ae34f53f16fe4e49425493b3cb0853",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Result__c-en_US",
+            "isDirectory": true,
+            "size": 320,
+            "modifiedTime": 1557892597156,
+            "changeTime": 1557892597156,
+            "contentHash": "ea25bbaa1a859e5357fd301b3ad231ed39d6d0af",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations",
+            "isDirectory": true,
+            "size": 160,
+            "modifiedTime": 1557974875615,
+            "changeTime": 1557974875615,
+            "contentHash": "8e4e294f5632a6674af1164132771f6a29cf3260",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Setting__mdt-en_US",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Setting__mdt-en_US",
+            "isDirectory": true,
+            "size": 64,
+            "modifiedTime": 1557974875687,
+            "changeTime": 1557974875687,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/customMetadata",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/customMetadata",
+            "isDirectory": true,
+            "size": 96,
+            "modifiedTime": 1557974875689,
+            "changeTime": 1557974875689,
+            "contentHash": "4001c21d0e505a3ff9e8d7d5c13ed14a3e21c60d",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_AccountDataSkewBatch.cls-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_AccountDataSkewBatch.cls-meta.xml",
+            "isDirectory": false,
+            "size": 174,
+            "modifiedTime": 1557894755548,
+            "changeTime": 1557894755548,
+            "contentHash": "ab3ac94968e57930b88820ab5438fa820ed36730",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_AccountDataSkewBatch.cls",
+        {
+            "state": "u",
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_AccountDataSkewBatch.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1888,
+            "modifiedTime": 1557977676408,
+            "changeTime": 1557977676408,
+            "contentHash": "7aab8988375a53ed8386be336fe3ab81b1bfc6ce"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestDataFactory.cls-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestDataFactory.cls-meta.xml",
+            "isDirectory": false,
+            "size": 174,
+            "modifiedTime": 1557894815295,
+            "changeTime": 1557894815295,
+            "contentHash": "ab3ac94968e57930b88820ab5438fa820ed36730",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestDataFactory.cls",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestDataFactory.cls",
+            "isDirectory": false,
+            "size": 740,
+            "modifiedTime": 1557894815296,
+            "changeTime": 1557894815296,
+            "contentHash": "97e02aca22e271d73b8b11ee67fde7a93692ad48",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestAccountDataSkewBatch.cls-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestAccountDataSkewBatch.cls-meta.xml",
+            "isDirectory": false,
+            "size": 174,
+            "modifiedTime": 1557894815298,
+            "changeTime": 1557894815298,
+            "contentHash": "ab3ac94968e57930b88820ab5438fa820ed36730",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestAccountDataSkewBatch.cls",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_TestAccountDataSkewBatch.cls",
+            "isDirectory": false,
+            "size": 464,
+            "modifiedTime": 1557894815299,
+            "changeTime": 1557894815299,
+            "contentHash": "eb6f00b67e020db11d54f4596be71e587c85b0bc",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/DSD_Data_Skew_Detector_Settings__mdt.object-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/DSD_Data_Skew_Detector_Settings__mdt.object-meta.xml",
+            "isDirectory": false,
+            "size": 263,
+            "modifiedTime": 1557974875604,
+            "changeTime": 1557974875604,
+            "contentHash": "9de4efe7c87bb3177c1e8e7ab4366b1f48450a4e",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Report_Other_Record_Counts__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Report_Other_Record_Counts__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 656,
+            "modifiedTime": 1557974875605,
+            "changeTime": 1557974875605,
+            "contentHash": "e4e77dc9d16680fcf178fbf9b3f4fda3a36c5754",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Reporting_Threshold__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Reporting_Threshold__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 742,
+            "modifiedTime": 1557974875605,
+            "changeTime": 1557974875605,
+            "contentHash": "06706fffca12d92d54b4dc4a8c99488487ea28ea",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Skew_Threshold__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Skew_Threshold__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 688,
+            "modifiedTime": 1557974875605,
+            "changeTime": 1557974875605,
+            "contentHash": "e1d49b08d2283266681910e69bc7600fcbb06c9f",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Skew_Type__c.field-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields/DSD_Skew_Type__c.field-meta.xml",
+            "isDirectory": false,
+            "size": 804,
+            "modifiedTime": 1557974875606,
+            "changeTime": 1557974875606,
+            "contentHash": "d3d1109328e23a8b9b89ecea032d78687a905e3d",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/layouts/DSD_Data_Skew_Detector_Settings__mdt-Data Skew Detector Setting Layout.layout-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/layouts/DSD_Data_Skew_Detector_Settings__mdt-Data Skew Detector Setting Layout.layout-meta.xml",
+            "isDirectory": false,
+            "size": 2803,
+            "modifiedTime": 1557974875611,
+            "changeTime": 1557974875611,
+            "contentHash": "6c004f23e19b620ded36c05617b0d3bf1a917d89",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Data_Skew_Detector_Settings__mdt-en_US.objectTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Data_Skew_Detector_Settings__mdt-en_US.objectTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 412,
+            "modifiedTime": 1557974875615,
+            "changeTime": 1557974875615,
+            "contentHash": "3c804b64d1ce3b968a6bdb93ab6eb7c295a5dab7",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Report_Other_Record_Counts__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Report_Other_Record_Counts__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 371,
+            "modifiedTime": 1557974875615,
+            "changeTime": 1557974875615,
+            "contentHash": "a50fb2db9906dfa08eff08ccfb71be791b48a985",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Reporting_Threshold__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Reporting_Threshold__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 373,
+            "modifiedTime": 1557974875616,
+            "changeTime": 1557974875616,
+            "contentHash": "d9708b6cff1aeee290740c04fa4d8a97cb40f43f",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Skew_Threshold__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Skew_Threshold__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 341,
+            "modifiedTime": 1557974875616,
+            "changeTime": 1557974875616,
+            "contentHash": "0281619726d106dccbe7027f71ffdc8507aedb62",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Skew_Type__c.fieldTranslation-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US/DSD_Skew_Type__c.fieldTranslation-meta.xml",
+            "isDirectory": false,
+            "size": 406,
+            "modifiedTime": 1557974875616,
+            "changeTime": 1557974875616,
+            "contentHash": "4c2c280a28e249d0b9e280695d7779e237aed42e",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/customMetadata/DSD_Data_Skew_Detector_Settings.DSD_Account_Settings.md-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/customMetadata/DSD_Data_Skew_Detector_Settings.DSD_Account_Settings.md-meta.xml",
+            "isDirectory": false,
+            "size": 779,
+            "modifiedTime": 1557974875674,
+            "changeTime": 1557974875674,
+            "contentHash": "0102716d159f651869cccd320dc3995dc3b7d26c",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt",
+            "isDirectory": true,
+            "size": 128,
+            "modifiedTime": 1557974875604,
+            "changeTime": 1557974875604,
+            "contentHash": "cb0ad46c92cab4a85c35e8197d80269c426d526c",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objects/DSD_Data_Skew_Detector_Settings__mdt/fields",
+            "isDirectory": true,
+            "size": 192,
+            "modifiedTime": 1557974875606,
+            "changeTime": 1557974875606,
+            "contentHash": "42a4fd8a3442005ad62938d089204b6ec01b4318",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/objectTranslations/DSD_Data_Skew_Detector_Settings__mdt-en_US",
+            "isDirectory": true,
+            "size": 224,
+            "modifiedTime": 1557974875616,
+            "changeTime": 1557974875616,
+            "contentHash": "b98ba60a02c073efa760a8de3062274f53772b7f",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_Settings.cls",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_Settings.cls",
+            "isDirectory": false,
+            "size": 1025,
+            "modifiedTime": 1557976893028,
+            "changeTime": 1557976893028,
+            "contentHash": "3605e026bc4f1e6b2c11f5eff569d8d2bae67c57",
+            "isMetadataFile": false,
+            "state": "u"
+        }
+    ],
+    [
+        "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_Settings.cls-meta.xml",
+        {
+            "sourcePath": "/Users/bob/Development/DataSkewDetector/force-app/main/default/classes/DSD_Settings.cls-meta.xml",
+            "isDirectory": false,
+            "size": 190,
+            "modifiedTime": 1557976229004,
+            "changeTime": 1557976229004,
+            "contentHash": "b966008c25f02962a1b9a65a4cceb54981b783f9",
+            "isMetadataFile": true,
+            "state": "u"
+        }
+    ]
+]

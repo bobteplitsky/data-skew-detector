@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The API name of the object that has too many records that lookup to the parent object --></help>
+    <label><!-- Skewed Child Object Name --></label>
+    <name>DSD_Child_Object_Name__c</name>
+</CustomFieldTranslation>

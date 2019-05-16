@@ -1,0 +1,10 @@
+{
+  "orgName": "DSD Dev Org",
+  "edition": "Developer",
+  "features": [],
+  "settings": {
+    "orgPreferenceSettings": {
+      "s1DesktopEnabled": true
+    }
+  }
+}

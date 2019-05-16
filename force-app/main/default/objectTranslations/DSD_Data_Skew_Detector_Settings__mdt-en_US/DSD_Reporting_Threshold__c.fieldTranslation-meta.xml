@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- If a parent object has this many child records or more, it will be flagged for reporting but not as having data skew --></help>
+    <label><!-- Reporting Threshold --></label>
+    <name>DSD_Reporting_Threshold__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DSD_Reporting_Threshold__c</fullName>
+    <description>If a parent object has this many child records or more, it will be flagged for reporting but not as having data skew</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If a parent object has this many child records or more, it will be flagged for reporting but not as having data skew</inlineHelpText>
+    <label>Reporting Threshold</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

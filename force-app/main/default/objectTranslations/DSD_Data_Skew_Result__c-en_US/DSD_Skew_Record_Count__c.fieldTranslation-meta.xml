@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The number of records found to that meet the data skew threshold --></help>
+    <label><!-- Skew Record Count --></label>
+    <name>DSD_Skew_Record_Count__c</name>
+</CustomFieldTranslation>
