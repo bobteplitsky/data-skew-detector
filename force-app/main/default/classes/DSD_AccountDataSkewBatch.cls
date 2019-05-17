@@ -38,12 +38,6 @@ public class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Da
                 }
             }
         }
-
-        // for(sObject obj : scope) {
-        //     if(Limits.getQueries() == Limits.getLimitQueries()) return;
-        //     Integer contactCount = [select count() from contact where accountid = :obj.Id];
-        //     if(contactCount > 0) m_accountContactCount.put(obj.Id, contactCount);
-        // }
     }
 
     public void finish(Database.BatchableContext bc) {
