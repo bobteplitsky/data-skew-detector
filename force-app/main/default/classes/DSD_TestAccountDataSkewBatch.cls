@@ -26,7 +26,7 @@ public with sharing class DSD_TestAccountDataSkewBatch {
         settings.DSD_Skew_Threshold__c = skewThresholdForTest;
         DSD_Settings.testAccountSettings = settings;
 
-        Database.executeBatch(new DSD_AccountDataSkewBatch('select id from account'));
+        Database.executeBatch(new DSD_AccountDataSkewBatch());
         
         Test.stopTest();
 

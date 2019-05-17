@@ -7,10 +7,10 @@ public class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Da
     // vars that maintain state across batches
     private Map<Id, Integer> accountContactCount;
 
-    public DSD_AccountDataSkewBatch(String query) {
+    public DSD_AccountDataSkewBatch() {
         this.accountSettings = DSD_Settings.getAccountSettings();
         this.accountContactCount = new Map<Id, Integer>();
-        this.query = query;
+        this.query = 'SELECT Id FROM Account';
     }
 
     public Database.QueryLocator start(Database.BatchableContext bc) {
