@@ -1,4 +1,4 @@
-public with sharing class DSD_OwnerDataSkewBatch implements Database.Batchable<sObject>, Database.Stateful {
+public without sharing class DSD_OwnerDataSkewBatch implements Database.Batchable<sObject>, Database.Stateful {
     
     // vars that maintain initial state 
     private final String objectApiName;
