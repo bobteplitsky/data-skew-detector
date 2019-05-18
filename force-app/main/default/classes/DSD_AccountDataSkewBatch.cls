@@ -1,4 +1,4 @@
-public class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Database.Stateful {
+public without sharing class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Database.Stateful {
     
     // vars that maintain initial state 
     private final String query;
@@ -8,7 +8,7 @@ public class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Da
     private Map<Id, Integer> accountContactCount;
 
     public DSD_AccountDataSkewBatch() {
-        this.accountSettings = DSD_Settings.getAccountSettings();
+        this.accountSettings = DSD_Settings.getAccountSkewSettings();
         this.accountContactCount = new Map<Id, Integer>();
         this.query = 'SELECT Id FROM Account';
     }
@@ -24,7 +24,6 @@ public class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Da
         Integer contactCount;
 
         for (AggregateResult ar : [SELECT COUNT(Id) ContactCount, AccountId FROM Contact WHERE AccountId in :scope GROUP BY AccountId]) {
-            System.debug('here');
             
             accountId = (Id)ar.get('AccountId');
             contactCount = (Integer)ar.get('ContactCount');
@@ -41,7 +40,7 @@ public class DSD_AccountDataSkewBatch implements Database.Batchable<sObject>, Da
     }
 
     public void finish(Database.BatchableContext bc) {
-        System.debug('accountContactCount map: ' + accountContactCount);
+        //System.debug('accountContactCount map: ' + accountContactCount);
         DSD_ResultsSupport.saveResults(accountSettings, accountContactCount);
     }
 }
