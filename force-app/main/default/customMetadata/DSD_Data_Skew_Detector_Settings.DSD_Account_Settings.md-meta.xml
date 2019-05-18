@@ -3,6 +3,14 @@
     <label>Account Settings</label>
     <protected>true</protected>
     <values>
+        <field>DSD_Child_Object_API_Name__c</field>
+        <value xsi:type="xsd:string">Contact</value>
+    </values>
+    <values>
+        <field>DSD_Parent_Object_API_Name__c</field>
+        <value xsi:type="xsd:string">Account</value>
+    </values>
+    <values>
         <field>DSD_Report_Other_Record_Counts__c</field>
         <value xsi:type="xsd:boolean">false</value>
     </values>
