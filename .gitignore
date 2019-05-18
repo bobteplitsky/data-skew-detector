@@ -6,3 +6,4 @@
 node_modules
 .idea
 /.sfdx
+/force-app/main/default/profiles
