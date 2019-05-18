@@ -21,12 +21,10 @@ public with sharing class DSD_TestAccountDataSkewBatch {
         insert contacts2;
 
         Test.startTest();
-
         DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getAccountSkewSettings();
         settings.DSD_Skew_Threshold__c = skewThresholdForTest;
         DSD_Settings.testAccountSettings = settings;
         Database.executeBatch(new DSD_AccountDataSkewBatch());
-        
         Test.stopTest();
 
         DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_ResultsSupport.SKEW_TYPE_ACCOUNT);
