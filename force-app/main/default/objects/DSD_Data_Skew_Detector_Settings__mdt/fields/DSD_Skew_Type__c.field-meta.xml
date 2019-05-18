@@ -17,6 +17,11 @@
                 <default>true</default>
                 <label>Account</label>
             </value>
+            <value>
+                <fullName>Owner</fullName>
+                <default>false</default>
+                <label>Owner</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
