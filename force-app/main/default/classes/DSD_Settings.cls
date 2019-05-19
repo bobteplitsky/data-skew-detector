@@ -56,7 +56,8 @@ public with sharing class DSD_Settings {
             DSD_Report_Other_Record_Counts__c, 
             DSD_Reporting_Threshold__c,
             DSD_Child_Object_API_Name__c,
-            DSD_Parent_Object_API_Name__c
+            DSD_Parent_Object_API_Name__c,
+            DSD_Lookup_Skew_Child_Limit__c
             FROM DSD_Data_Skew_Detector_Settings__mdt 
             WHERE QualifiedApiName = :apiName];
     }
