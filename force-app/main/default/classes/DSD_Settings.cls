@@ -32,6 +32,22 @@ public with sharing class DSD_Settings {
         return ownerSettings;
     }
 
+    public static DSD_Data_Skew_Detector_Settings__mdt testLookupSettings;
+    private static DSD_Data_Skew_Detector_Settings__mdt lookupSettings;
+
+    public static DSD_Data_Skew_Detector_Settings__mdt getLookupSkewSettings() {
+
+        if(lookupSettings != null) return lookupSettings;
+
+        if(Test.isRunningTest() && testLookupSettings != null) {
+            lookupSettings = testLookupSettings;
+            return lookupSettings;
+        }
+
+        lookupSettings = getSingleRecord('DSD_Lookup_Settings');
+        return lookupSettings;
+    }
+
     private static DSD_Data_Skew_Detector_Settings__mdt getSingleRecord(String apiName) {
         return [SELECT MasterLabel,
             QualifiedApiName,
