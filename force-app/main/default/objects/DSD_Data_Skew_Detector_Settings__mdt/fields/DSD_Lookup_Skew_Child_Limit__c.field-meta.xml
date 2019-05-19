@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DSD_Lookup_Skew_Child_Limit__c</fullName>
+    <description>Limits the number of child objects to scan for lookup data skew</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Limits the number of child objects to scan for lookup data skew</inlineHelpText>
+    <label>Lookup Skew Child Limit</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

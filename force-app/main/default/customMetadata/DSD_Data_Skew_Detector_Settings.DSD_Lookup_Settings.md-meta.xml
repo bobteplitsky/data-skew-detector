@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Lookup Settings</label>
+    <protected>true</protected>
+    <values>
+        <field>DSD_Child_Object_API_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DSD_Lookup_Skew_Child_Limit__c</field>
+        <value xsi:type="xsd:double">10.0</value>
+    </values>
+    <values>
+        <field>DSD_Parent_Object_API_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DSD_Report_Other_Record_Counts__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>DSD_Reporting_Threshold__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DSD_Skew_Threshold__c</field>
+        <value xsi:type="xsd:double">10000.0</value>
+    </values>
+    <values>
+        <field>DSD_Skew_Type__c</field>
+        <value xsi:type="xsd:string">Lookup</value>
+    </values>
+</CustomMetadata>

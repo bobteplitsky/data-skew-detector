@@ -22,6 +22,11 @@
                 <default>false</default>
                 <label>Owner</label>
             </value>
+            <value>
+                <fullName>Lookup</fullName>
+                <default>false</default>
+                <label>Lookup</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>
