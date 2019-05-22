@@ -46,6 +46,8 @@ public without sharing class DSD_OwnerDataSkewBatch implements Database.Batchabl
     }
 
     public void finish(Database.BatchableContext bc) {
+        // TODO: Add setting to make deleting optional?
+        DSD_ResultsSupport.hardDeleteResults(DSD_ResultsSupport.SKEW_TYPE_OWNER);
         DSD_ResultsSupport.saveResults(ownerSettings, ownerCountMap);
     }
 }

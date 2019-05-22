@@ -40,7 +40,7 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
     }
 
     public void finish(Database.BatchableContext bc) {
-        //System.debug('accountContactCount map: ' + accountContactCount);
+        DSD_ResultsSupport.hardDeleteResults(DSD_ResultsSupport.SKEW_TYPE_ACCOUNT);
         DSD_ResultsSupport.saveResults(accountSettings, accountContactCount);
     }
 }
