@@ -29,5 +29,11 @@ public with sharing class DSD_TestSupport {
     public static User getTestUser() {
 	 	User[] users = [SELECT Id FROM User WHERE ProfileId IN (SELECT Id FROM Profile WHERE Name='System Administrator') and IsActive=true LIMIT 1];
         return users.size() > 0 ? users[0] : null;
-	 }
+	}
+
+    public static User initTestUser(String username, String thealias) {
+        User u = new User(Alias = thealias, Email = username + '@milenine.com', FirstName='Joe', LastName= username, TimeZoneSidKey = 'America/Los_Angeles', UserName = username + '@milenine.com', LocaleSidKey='en_US', EmailEncodingKey='UTF-8', LanguageLocaleKey = 'en_US');
+        u.ProfileId = UserInfo.getProfileId();
+        return u;
+    }
 }
