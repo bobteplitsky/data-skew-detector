@@ -14,10 +14,13 @@ public with sharing class DSD_TestOwnerDataSkewBatch {
 
         Lead[] leadsWithSkew = DSD_TestSupport.initTestLeads('dsd_testlead', childObjectCount);
         for(Lead l : leadsWithSkew) l.OwnerId = u.Id;
-        insert leads;
+        insert leadsWithSkew;
 
         // add some leads not owned by this user to make sure they don't get counted in the skew count
+        User u2 = DSD_TestSupport.initTestUser('mytestuser', 'testu');
+        insert u2;
         Lead[] leadsWithoutSkew = DSD_TestSupport.initTestLeads('dsd_leadswithoutskew', childObjectCountWithoutSkew);
+        for(Lead l : leadsWithoutSkew) l.OwnerId = u2.Id;
         insert leadsWithoutSkew;
 
         Test.startTest();
@@ -49,7 +52,7 @@ public with sharing class DSD_TestOwnerDataSkewBatch {
 
         Lead[] leadsWithSkew = DSD_TestSupport.initTestLeads('dsd_testlead', childObjectCount);
         for(Lead l : leadsWithSkew) l.OwnerId = u.Id;
-        insert leads;
+        insert leadsWithSkew;
 
         Test.startTest();
         DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getOwnerSkewSettings();
@@ -76,7 +79,7 @@ public with sharing class DSD_TestOwnerDataSkewBatch {
 
         Lead[] leadsWithSkew = DSD_TestSupport.initTestLeads('dsd_testlead', childObjectCount);
         for(Lead l : leadsWithSkew) l.OwnerId = u.Id;
-        insert leads;
+        insert leadsWithSkew;
 
         Test.startTest();
         DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getOwnerSkewSettings();
