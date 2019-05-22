@@ -2,9 +2,9 @@ public inherited sharing class DSD_ResultsSupport {
     
     @TestVisible public static final String SKEW_TYPE_ACCOUNT = 'Account';
     @TestVisible public static final String SKEW_TYPE_OWNER = 'Owner';
+    @TestVisible public static final String SKEW_TYPE_LOOKUP = 'Lookup';
 
     public static List<DSD_Data_Skew_Result__c> saveResults(DSD_Data_Skew_Detector_Settings__mdt settings, Map<Id, Integer> parentChildRecCountMap) {
-        hardDeleteResults(settings.DSD_Skew_Type__c);
         DSD_Data_Skew_Result__c[] results = new DSD_Data_Skew_Result__c[]{};
         
         for(Id recId : parentChildRecCountMap.keySet()) {
