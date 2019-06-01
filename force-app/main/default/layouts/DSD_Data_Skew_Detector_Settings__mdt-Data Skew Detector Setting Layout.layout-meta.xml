@@ -42,6 +42,18 @@
                 <behavior>Edit</behavior>
                 <field>DSD_Lookup_Skew_Child_Limit__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DSD_Last_Run_Start_Time__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DSD_Last_Run_End_Time__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DSD_Last_Run_Skewed_Record_Count__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

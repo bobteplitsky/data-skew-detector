@@ -7,3 +7,6 @@ node_modules
 .idea
 /.sfdx
 /force-app/main/default/profiles
+/force-app/main/default/profileSessionSettings
+/force-app/main/default/profilePasswordPolicies
+/force-app/main/default/applications/standard__LightningSales.app-meta.xml

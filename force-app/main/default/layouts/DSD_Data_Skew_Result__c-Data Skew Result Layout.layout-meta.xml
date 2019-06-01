@@ -24,11 +24,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DSD_Parent_Object_Name__c</field>
+                <field>DSD_Parent_Object_API_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>DSD_Child_Object_Name__c</field>
+                <field>DSD_Child_Object_API_Name__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

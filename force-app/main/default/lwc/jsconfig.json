@@ -1,6 +1,12 @@
 {
     "compilerOptions": {
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/dsdHomeContainer": [
+                "dsdHomeContainer/dsdHomeContainer.js"
+            ]
+        }
     },
     "include": [
         "**/*",

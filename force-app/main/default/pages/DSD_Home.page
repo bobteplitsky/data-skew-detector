@@ -1,0 +1,15 @@
+<apex:page title="Data Skew Detector">
+    <apex:includeLightning />    
+    <div id="mainConfig" />
+    <script>
+        $Lightning.use("MNDSD:dsdHomeApp", function() {
+            $Lightning.createComponent("MNDSD:dsdHomeContainer",
+            {
+            },
+            "mainConfig",
+            function(cmp) {
+				//console.log("dsdMainConfigCmp created");
+            });
+        });       
+    </script>
+</apex:page>
