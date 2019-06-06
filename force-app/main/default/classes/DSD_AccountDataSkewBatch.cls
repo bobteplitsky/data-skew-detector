@@ -2,13 +2,13 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
     
     // vars that maintain initial state 
     private final String query;
-    private final DSD_Data_Skew_Detector_Settings__mdt accountSettings;
+    private final DSD_Settings__c accountSettings;
 
     // vars that maintain state across batches
     private Map<Id, Integer> accountContactCount;
 
     public DSD_AccountDataSkewBatch() {
-        this.accountSettings = DSD_Settings.getAccountSkewSettings();
+        this.accountSettings = DSD_SettingsSupport.getAccountSettings();
         this.accountContactCount = new Map<Id, Integer>();
         this.query = 'SELECT Id FROM Account';
     }
@@ -28,11 +28,11 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
             accountId = (Id)ar.get('AccountId');
             contactCount = (Integer)ar.get('ContactCount');
 
-            if(contactCount >= accountSettings.DSD_Skew_Threshold__c) {
+            if(contactCount >= accountSettings.Skew_Threshold__c) {
                 accountContactCount.put(accountId, contactCount);
             }
-            else if(accountSettings.DSD_Report_Other_Record_Counts__c) {
-                if(contactCount >= accountSettings.DSD_Reporting_Threshold__c) {
+            else if(accountSettings.Report_Other_Record_Counts__c) {
+                if(contactCount >= accountSettings.Reporting_Threshold__c) {
                     accountContactCount.put(accountId, contactCount);
                 }
             }
@@ -40,7 +40,11 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
     }
 
     public void finish(Database.BatchableContext bc) {
-        DSD_ResultsSupport.hardDeleteResults(DSD_ResultsSupport.SKEW_TYPE_ACCOUNT);
+        DSD_ResultsSupport.hardDeleteResults(DSD_SettingsSupport.SKEW_TYPE_ACCOUNT);
         DSD_ResultsSupport.saveResults(accountSettings, accountContactCount);
     }
+
+    // public static String kickoffBatch(){
+    //     String jobId = Database.executeBatch(new DSD_AccountDataSkewBatch());
+    // }
 }

@@ -24,14 +24,14 @@ public with sharing class DSD_TestOwnerDataSkewBatch {
         insert leadsWithoutSkew;
 
         Test.startTest();
-        DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getOwnerSkewSettings();
-        settings.DSD_Skew_Threshold__c = skewThresholdForTest;
-        settings.DSD_Child_Object_API_Name__c = childObject;
-        DSD_Settings.testOwnerSettings = settings;
+        DSD_Settings__c settings = DSD_SettingsSupport.getOwnerSettings();
+        settings.Skew_Threshold__c = skewThresholdForTest;
+        settings.Child_Object_API_Name__c = childObject;
+        DSD_SettingsSupport.testOwnerSettings = settings;
         Database.executeBatch(new DSD_OwnerDataSkewBatch(childObject));
         Test.stopTest();
 
-        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_ResultsSupport.SKEW_TYPE_OWNER);
+        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_SettingsSupport.SKEW_TYPE_OWNER);
         
         System.assertEquals(1, results.size());
         System.assertEquals(u.Id, results[0].DSD_Skewed_Record_ID__c);
@@ -55,14 +55,14 @@ public with sharing class DSD_TestOwnerDataSkewBatch {
         insert leadsWithSkew;
 
         Test.startTest();
-        DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getOwnerSkewSettings();
-        settings.DSD_Skew_Threshold__c = skewThresholdForTest;
-        settings.DSD_Child_Object_API_Name__c = childObject;
-        DSD_Settings.testOwnerSettings = settings;
+        DSD_Settings__c settings = DSD_SettingsSupport.getOwnerSettings();
+        settings.Skew_Threshold__c = skewThresholdForTest;
+        settings.Child_Object_API_Name__c = childObject;
+        DSD_SettingsSupport.testOwnerSettings = settings;
         Database.executeBatch(new DSD_OwnerDataSkewBatch(childObject));
         Test.stopTest();
 
-        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_ResultsSupport.SKEW_TYPE_OWNER);
+        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_SettingsSupport.SKEW_TYPE_OWNER);
         System.assertEquals(0, results.size());
     }
 
@@ -82,16 +82,16 @@ public with sharing class DSD_TestOwnerDataSkewBatch {
         insert leadsWithSkew;
 
         Test.startTest();
-        DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getOwnerSkewSettings();
-        settings.DSD_Skew_Threshold__c = skewThresholdForTest;
-        settings.DSD_Child_Object_API_Name__c = childObject;
-        settings.DSD_Report_Other_Record_Counts__c = true;
-        settings.DSD_Reporting_Threshold__c = reportOtherThreshold;
-        DSD_Settings.testOwnerSettings = settings;
+        DSD_Settings__c settings = DSD_SettingsSupport.getOwnerSettings();
+        settings.Skew_Threshold__c = skewThresholdForTest;
+        settings.Child_Object_API_Name__c = childObject;
+        settings.Report_Other_Record_Counts__c = true;
+        settings.Reporting_Threshold__c = reportOtherThreshold;
+        DSD_SettingsSupport.testOwnerSettings = settings;
         Database.executeBatch(new DSD_OwnerDataSkewBatch(childObject));
         Test.stopTest();
 
-        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_ResultsSupport.SKEW_TYPE_OWNER);
+        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_SettingsSupport.SKEW_TYPE_OWNER);
         System.assertEquals(1, results.size());
         System.assertEquals(u.Id, results[0].DSD_Skewed_Record_ID__c);
         System.assertEquals(childObjectCount, results[0].DSD_Skew_Record_Count__c, 'Reported record count is incorrect');

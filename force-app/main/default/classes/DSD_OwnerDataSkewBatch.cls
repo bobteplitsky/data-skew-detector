@@ -2,7 +2,7 @@ public without sharing class DSD_OwnerDataSkewBatch implements Database.Batchabl
     
     // vars that maintain initial state 
     private final String objectApiName;
-    private final DSD_Data_Skew_Detector_Settings__mdt ownerSettings;
+    private final DSD_Settings__c ownerSettings;
 
     // vars that maintain state across batches
     private Map<Id, Integer> ownerCountMap;
@@ -10,7 +10,7 @@ public without sharing class DSD_OwnerDataSkewBatch implements Database.Batchabl
     public DSD_OwnerDataSkewBatch(String objectApiName) {
         // this will throw an exception if objectApiName is invalid, and will halt execution of the batch job
         Schema.DescribeSObjectResult[] result = Schema.describeSObjects(new List<String>{objectApiName});
-        this.ownerSettings = DSD_Settings.getOwnerSkewSettings();
+        this.ownerSettings = DSD_SettingsSupport.getOwnerSettings();
         this.objectApiName = objectApiName;
         this.ownerCountMap = new Map<Id, Integer>();
     }
@@ -32,13 +32,13 @@ public without sharing class DSD_OwnerDataSkewBatch implements Database.Batchabl
 
             System.debug('ownerId: ' + ownerId);
             System.debug('childCount: ' + childCount);
-            System.debug('skew threshold: ' + ownerSettings.DSD_Skew_Threshold__c);
+            System.debug('skew threshold: ' + ownerSettings.Skew_Threshold__c);
 
-            if(childCount >= ownerSettings.DSD_Skew_Threshold__c) {
+            if(childCount >= ownerSettings.Skew_Threshold__c) {
                 ownerCountMap.put(ownerId, childCount);
             }
-            else if(ownerSettings.DSD_Report_Other_Record_Counts__c) {
-                if(childCount >= ownerSettings.DSD_Reporting_Threshold__c) {
+            else if(ownerSettings.Report_Other_Record_Counts__c) {
+                if(childCount >= ownerSettings.Reporting_Threshold__c) {
                     ownerCountMap.put(ownerId, childCount);
                 }
             }
@@ -47,7 +47,7 @@ public without sharing class DSD_OwnerDataSkewBatch implements Database.Batchabl
 
     public void finish(Database.BatchableContext bc) {
         // TODO: Add setting to make deleting optional?
-        DSD_ResultsSupport.hardDeleteResults(DSD_ResultsSupport.SKEW_TYPE_OWNER);
+        DSD_ResultsSupport.hardDeleteResults(DSD_SettingsSupport.SKEW_TYPE_OWNER);
         DSD_ResultsSupport.saveResults(ownerSettings, ownerCountMap);
     }
 }

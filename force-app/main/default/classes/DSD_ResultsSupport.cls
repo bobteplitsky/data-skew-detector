@@ -1,20 +1,16 @@
 public inherited sharing class DSD_ResultsSupport {
-    
-    @TestVisible public static final String SKEW_TYPE_ACCOUNT = 'Account';
-    @TestVisible public static final String SKEW_TYPE_OWNER = 'Owner';
-    @TestVisible public static final String SKEW_TYPE_LOOKUP = 'Lookup';
 
-    public static List<DSD_Data_Skew_Result__c> saveResults(DSD_Data_Skew_Detector_Settings__mdt settings, Map<Id, Integer> parentChildRecCountMap) {
+    public static List<DSD_Data_Skew_Result__c> saveResults(DSD_Settings__c settings, Map<Id, Integer> parentChildRecCountMap) {
         DSD_Data_Skew_Result__c[] results = new DSD_Data_Skew_Result__c[]{};
         
         for(Id recId : parentChildRecCountMap.keySet()) {
             results.add(new DSD_Data_Skew_Result__c(
-                DSD_Child_Object_API_Name__c = settings.DSD_Child_Object_API_Name__c,
-                DSD_Parent_Object_API_Name__c = settings.DSD_Parent_Object_API_Name__c,
-                DSD_Reporting_Threshold__c = settings.DSD_Reporting_Threshold__c,
+                DSD_Child_Object_API_Name__c = settings.Child_Object_API_Name__c,
+                DSD_Parent_Object_API_Name__c = settings.Parent_Object_API_Name__c,
+                DSD_Reporting_Threshold__c = settings.Reporting_Threshold__c,
                 DSD_Skew_Record_Count__c = parentChildRecCountMap.get(recId),
-                DSD_Skew_Threshold__c = settings.DSD_Skew_Threshold__c,
-                DSD_Skew_Type__c = settings.DSD_Skew_Type__c,
+                DSD_Skew_Threshold__c = settings.Skew_Threshold__c,
+                DSD_Skew_Type__c = settings.Skew_Type__c,
                 DSD_Skewed_Record_ID__c = recId
             ));
         }

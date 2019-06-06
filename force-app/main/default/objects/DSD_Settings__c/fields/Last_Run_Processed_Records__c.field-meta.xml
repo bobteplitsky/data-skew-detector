@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Run_Processed_Records__c</fullName>
+    <description>The number of parent records that have already been processed for the most recent job</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The number of parent records that have already been processed for the most recent job</inlineHelpText>
+    <label>Last Run Processed Records</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

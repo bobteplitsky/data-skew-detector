@@ -1,7 +1,13 @@
 <template>
-    <lightning-card  variant="Narrow" title="Account Data Skew" icon-name="standard:account">
-		<lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+    <lightning-card variant="Narrow" title="Account Data Skew" icon-name="standard:account">
+		<lightning-button-icon icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
 		<p class="slds-p-horizontal_small">
+			<!-- <template if:true={accountSkewSettings.data}>
+				<p key={accountSkewSettings.Id}>Skew type: {skewType}</p>
+			</template>
+			<template if:true={accountSkewSettings.error}>
+				<c-error-panel errors={accountSkewSettings.error}></c-error-panel>
+			</template> -->
 		</p>
 		<p slot="footer">Card Footer</p>
 	</lightning-card>

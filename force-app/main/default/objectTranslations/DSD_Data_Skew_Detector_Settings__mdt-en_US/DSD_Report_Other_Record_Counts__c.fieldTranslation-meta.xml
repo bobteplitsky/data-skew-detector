@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <help><!-- When checked, record counts of child records will be recorded based on the Reportng Threshold value. --></help>
-    <label><!-- Report Other Record Counts --></label>
-    <name>DSD_Report_Other_Record_Counts__c</name>
-</CustomFieldTranslation>

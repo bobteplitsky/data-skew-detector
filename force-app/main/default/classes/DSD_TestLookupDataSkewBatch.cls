@@ -28,15 +28,15 @@ public with sharing class DSD_TestLookupDataSkewBatch {
         }
         
         Test.startTest();
-        DSD_Data_Skew_Detector_Settings__mdt settings = DSD_Settings.getLookupSkewSettings();
-        settings.DSD_Skew_Threshold__c = skewThresholdForTest;
-        settings.DSD_Parent_Object_API_Name__c = 'Account';
-        settings.DSD_Child_Object_API_Name__c = 'Contact';
-        DSD_Settings.testLookupSettings = settings;
+        DSD_Settings__c settings = DSD_SettingsSupport.getLookupSettings();
+        settings.Skew_Threshold__c = skewThresholdForTest;
+        settings.Parent_Object_API_Name__c = 'Account';
+        settings.Child_Object_API_Name__c = 'Contact';
+        DSD_SettingsSupport.testLookupSettings = settings;
         Database.executeBatch(new DSD_LookupDataSkewBatch('Account', childrenToProcess));
         Test.stopTest();
 
-        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_ResultsSupport.SKEW_TYPE_LOOKUP);
+        DSD_Data_Skew_Result__c[] results = DSD_ResultsSupport.getResultsByType(DSD_SettingsSupport.SKEW_TYPE_LOOKUP);
         System.assertEquals(10, results.size());
         
         for(DSD_Data_Skew_Result__c r : results) {

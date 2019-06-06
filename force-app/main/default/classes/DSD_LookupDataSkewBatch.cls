@@ -4,7 +4,7 @@ public without sharing class DSD_LookupDataSkewBatch implements Database.Batchab
     private final String parentObjectName;
     private final String childObjectName;
     private final String childFieldName;
-    private final DSD_Data_Skew_Detector_Settings__mdt lookupSettings;
+    private final DSD_Settings__c lookupSettings;
 
     // vars that maintain state across batches
     private Map<Id, Integer> childCountMap;
@@ -13,8 +13,8 @@ public without sharing class DSD_LookupDataSkewBatch implements Database.Batchab
     public DSD_LookupDataSkewBatch(String parentObjectName, List<Schema.ChildRelationship> crs) {
         // this will throw an exception if objectApiName is invalid, and will halt execution of the batch job
         Schema.DescribeSObjectResult[] result = Schema.describeSObjects(new List<String>{parentObjectName});
-        DSD_ResultsSupport.hardDeleteResults(DSD_ResultsSupport.SKEW_TYPE_LOOKUP);
-        this.lookupSettings = DSD_Settings.getLookupSkewSettings();
+        DSD_ResultsSupport.hardDeleteResults(DSD_SettingsSupport.SKEW_TYPE_LOOKUP);
+        this.lookupSettings = DSD_SettingsSupport.getLookupSettings();
         this.childCountMap = new Map<Id, Integer>();
         this.parentObjectName = parentObjectName;
         
@@ -30,9 +30,9 @@ public without sharing class DSD_LookupDataSkewBatch implements Database.Batchab
     }
 
     private DSD_LookupDataSkewBatch(String parentObjectName, List<DSD_LookupDataSkewBatch.DSD_LookupSkewChildObject> childrenToProcess, Boolean deleteOldResults) {
-        if(deleteOldResults) DSD_ResultsSupport.hardDeleteResults(DSD_ResultsSupport.SKEW_TYPE_LOOKUP);
+        if(deleteOldResults) DSD_ResultsSupport.hardDeleteResults(DSD_SettingsSupport.SKEW_TYPE_LOOKUP);
 
-        this.lookupSettings = DSD_Settings.getLookupSkewSettings();
+        this.lookupSettings = DSD_SettingsSupport.getLookupSettings();
         this.childCountMap = new Map<Id, Integer>();
         this.parentObjectName = parentObjectName;
 
@@ -57,11 +57,11 @@ public without sharing class DSD_LookupDataSkewBatch implements Database.Batchab
             parentId = (Id)ar.get(childFieldName);
             childCount = (Integer)ar.get('ChildCount');
 
-            if(childCount >= lookupSettings.DSD_Skew_Threshold__c) {
+            if(childCount >= lookupSettings.Skew_Threshold__c) {
                 childCountMap.put(parentId, childCount);
             }
-            else if(lookupSettings.DSD_Report_Other_Record_Counts__c) {
-                if(childCount >= lookupSettings.DSD_Reporting_Threshold__c) {
+            else if(lookupSettings.Report_Other_Record_Counts__c) {
+                if(childCount >= lookupSettings.Reporting_Threshold__c) {
                     childCountMap.put(parentId, childCount);
                 }
             }
