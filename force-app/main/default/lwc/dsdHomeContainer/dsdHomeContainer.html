@@ -2,12 +2,19 @@
     <lightning-card variant="Narrow" title="Account Data Skew" icon-name="standard:account">
 		<lightning-button-icon icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
 		<p class="slds-p-horizontal_small">
-			<!-- <template if:true={accountSkewSettings.data}>
-				<p key={accountSkewSettings.Id}>Skew type: {skewType}</p>
+			<template if:true={accountSettings}>
+				<lightning-button label="Run" title="Run" onclick={handleRun}></lightning-button>
+				
+				<p>Status: {batchStatus}</p>
+				<p>Total accounts to process: {totalRecsToProcess}</p>
+				<!-- <p>Accounts already processed: </p> -->
+				<!-- <p>Batch object: {batchObject}</p> -->
+				<p>Progress: {progress}%</p>
+				<lightning-progress-bar value={progress} variant="circular"></lightning-progress-bar>
 			</template>
-			<template if:true={accountSkewSettings.error}>
-				<c-error-panel errors={accountSkewSettings.error}></c-error-panel>
-			</template> -->
+			<template if:true={error}>
+				<c-error-panel errors={error}></c-error-panel>
+			</template>
 		</p>
 		<p slot="footer">Card Footer</p>
 	</lightning-card>

@@ -2,8 +2,8 @@
     <apex:includeLightning />    
     <div id="mainConfig" />
     <script>
-        $Lightning.use("MNDSD:dsdHomeApp", function() {
-            $Lightning.createComponent("MNDSD:dsdHomeContainer",
+        $Lightning.use("c:dsdHomeApp", function() {
+            $Lightning.createComponent("c:dsdHomeContainer",
             {
             },
             "mainConfig",

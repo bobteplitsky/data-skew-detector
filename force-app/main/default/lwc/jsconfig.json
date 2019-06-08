@@ -5,6 +5,12 @@
         "paths": {
             "c/dsdHomeContainer": [
                 "dsdHomeContainer/dsdHomeContainer.js"
+            ],
+            "c/errorPanel": [
+                "errorPanel/errorPanel.js"
+            ],
+            "c/ldsUtils": [
+                "ldsUtils/ldsUtils.js"
             ]
         }
     },
