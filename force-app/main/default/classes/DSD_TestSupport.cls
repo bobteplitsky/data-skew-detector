@@ -12,7 +12,7 @@ public with sharing class DSD_TestSupport {
         List<Contact> contacts = new List<Contact>();
         for(Account a : accts) {
             for(Integer i = 1; i <= count; i++) {
-                contacts.add(new Contact(FirstName='Test', LastName='LastName' + String.valueOf(i), AccountId=a.Id));
+                contacts.add(new Contact(FirstName='Test', LastName=a.Name + ' ' + String.valueOf(i), AccountId=a.Id));
             }
         }
         return contacts;
