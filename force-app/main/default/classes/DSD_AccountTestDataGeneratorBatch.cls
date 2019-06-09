@@ -11,8 +11,7 @@ global without sharing class DSD_AccountTestDataGeneratorBatch implements Databa
     }
 
     global List<Account> start(Database.BatchableContext bc) {
-        List<Account> accts = DSD_TestSupport.initTestAccounts(accountPrefix, accountCount);
-        return accts;
+        return DSD_TestSupport.initTestAccounts(accountPrefix, accountCount);
     }
 
     global void execute(Database.BatchableContext bc, List<Account> accts) {
