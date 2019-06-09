@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_Skew_Type__c</field>
+    </columns>
+    <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_Parent_Object_API_Name__c</field>
+    </columns>
+    <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_Child_Object_API_Name__c</field>
+    </columns>
+    <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_Skewed_Record_ID__c</field>
+    </columns>
+    <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_View_Record__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>DSD_Data_Skew_Result__c.DSD_Skew_Record_Count__c</field>
+    </columns>
+    <description>Shows accounts that have data skew detected</description>
+    <filter>
+        <criteriaItems>
+            <column>DSD_Data_Skew_Result__c.DSD_Skew_Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Account Data Skew Results</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$DSD_Data_Skew_Result__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

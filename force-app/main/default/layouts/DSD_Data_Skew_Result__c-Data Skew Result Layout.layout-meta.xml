@@ -38,6 +38,10 @@
                 <behavior>Edit</behavior>
                 <field>DSD_Reporting_Threshold__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>DSD_View_Record__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
