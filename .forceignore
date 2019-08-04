@@ -17,3 +17,5 @@ package.xml
 *SessionSetting*
 *PasswordPolicy*
 *Profile*
+**/*appMenus*
+**/*profiles*
