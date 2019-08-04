@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>DSD_Account_Data_Skew</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Data Skew Detector</label>
+    <tabs>DSD_Account_Data_Skew</tabs>
+    <tabs>DSD_Owner_Data_Skew</tabs>
+    <tabs>DSD_Lookup_Data_Skew</tabs>
+</CustomApplication>

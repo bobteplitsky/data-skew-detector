@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Detect account, owner, and lookup data skew in your org</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <label>Data Skew Detector</label>
+    <navType>Standard</navType>
+    <tabs>DSD_Account_Data_Skew</tabs>
+    <tabs>DSD_Owner_Data_Skew</tabs>
+    <tabs>DSD_Lookup_Data_Skew</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Data_Skew_Detector_UtilityBar</utilityBar>
+</CustomApplication>

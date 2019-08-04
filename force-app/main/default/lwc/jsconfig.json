@@ -3,8 +3,17 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/dsdAccountContainer": [
+                "dsdAccountContainer/dsdAccountContainer.js"
+            ],
             "c/dsdHomeContainer": [
                 "dsdHomeContainer/dsdHomeContainer.js"
+            ],
+            "c/dsdLookupContainer": [
+                "dsdLookupContainer/dsdLookupContainer.js"
+            ],
+            "c/dsdOwnerContainer": [
+                "dsdOwnerContainer/dsdOwnerContainer.js"
             ],
             "c/errorPanel": [
                 "errorPanel/errorPanel.js"

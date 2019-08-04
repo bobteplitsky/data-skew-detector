@@ -1,0 +1,27 @@
+<template>
+	<div class="slds-grid slds-gutters">
+		<div class="slds-col">
+			<lightning-card variant="Narrow" title="Lookup Data Skew" icon-name="standard:account">
+				<lightning-button label="Run" title="Run" slot="actions" onclick={handleRun}></lightning-button>
+				<p class="slds-p-horizontal_small">
+					<template if:true={accountSettings}>
+						<p>Status: {batchStatus}</p>
+						<p>Total accounts to process: {totalRecsToProcess}</p>
+						<p>Progress: {progress}%</p>
+						<lightning-progress-bar value={progress} variant="circular"></lightning-progress-bar>
+					</template>
+					<template if:true={error}>
+						<c-error-panel errors={error}></c-error-panel>
+					</template>
+				</p>
+				<p slot="footer">Card Footer</p>
+			</lightning-card>
+		</div>
+		<div class="slds-col">
+			<span>2</span>
+		</div> 
+		<div class="slds-col"> 
+			<span>3</span> 
+		</div>
+	</div>
+</template>

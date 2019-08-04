@@ -1,0 +1,21 @@
+<apex:page title="Owner Data Skew">
+    <apex:includeLightning />
+    <apex:slds />
+    <div class="slds-scope">
+        <div style="background-color: #fafaf9;">
+            <div id="mainConfig"/>
+        </div>
+    </div>
+    <script>
+        $Lightning.use("c:dsdOwnerApp", function() {
+            $Lightning.createComponent("c:dsdOwnerContainer",
+            {
+            },
+            "mainConfig",
+            function(cmp) {
+				//console.log("dsdMainConfigCmp created");
+            });
+        });       
+    </script>
+    
+</apex:page>

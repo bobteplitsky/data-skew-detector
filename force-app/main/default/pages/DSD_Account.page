@@ -1,0 +1,21 @@
+<apex:page title="Account Data Skew">
+    <apex:includeLightning />
+    <apex:slds />
+    <div class="slds-scope">
+        <div style="background-color: #fafaf9; margin: 20px">
+            <div id="mainConfig"/>
+        </div>
+    </div>
+    <script>
+        $Lightning.use("c:dsdAccountApp", function() {
+            $Lightning.createComponent("c:dsdAccountContainer",
+            {
+            },
+            "mainConfig",
+            function(cmp) {
+				//console.log("dsdMainConfigCmp created");
+            });
+        });       
+    </script>
+    
+</apex:page>

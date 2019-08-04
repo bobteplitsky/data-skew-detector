@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>DSD_Data_Skew_Detector</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+    <applicationVisibilities>
+        <application>Data_Skew_Detector_Classic</application>
+        <visible>true</visible>
+    </applicationVisibilities>
     <classAccesses>
         <apexClass>DSD_AccountDataSkewBatch</apexClass>
         <enabled>true</enabled>
@@ -88,7 +96,15 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabSettings>
-        <tab>DSD_Home</tab>
+        <tab>DSD_Account_Data_Skew</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>DSD_Owner_Data_Skew</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>DSD_Lookup_Data_Skew</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>
