@@ -5,7 +5,6 @@
       "default": true
     }
   ],
-  "namespace": "MNDSD",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "45.0"
 }
