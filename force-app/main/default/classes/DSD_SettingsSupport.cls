@@ -40,6 +40,7 @@ public without sharing class DSD_SettingsSupport {
     public static DSD_SettingsSupport.SettingsWrapper getAccountSettingsWrapped() {
         if(accountSettingsWrapped != null) return accountSettingsWrapped;
         accountSettingsWrapped = wrapSettings(getAccountSettings());
+        accountSettingsWrapped.parentObjectCount = DSD_AccountDataSkewBatch.getAccountCount();
         return accountSettingsWrapped;
     }
 
@@ -133,6 +134,7 @@ public without sharing class DSD_SettingsSupport {
         w.reportingThreshold = (Integer)s.Reporting_Threshold__c;
         w.skewThreshold = (Integer)s.Skew_Threshold__c;
         w.skewType = s.Skew_Type__c;
+        w.parentObjectCount = 0;
         return w;
     }
 
@@ -174,6 +176,7 @@ public without sharing class DSD_SettingsSupport {
         @AuraEnabled public Integer lastRunTotalRecs { get;set; }
         @AuraEnabled public Integer lookupSkewChildLimit { get;set; }
         @AuraEnabled public String parentObjectApiName { get;set; }
+        @AuraEnabled public Integer parentObjectCount { get;set; }
         @AuraEnabled public Boolean reportOtherRecCounts { get;set; }
         @AuraEnabled public Integer reportingThreshold { get;set; }
         @AuraEnabled public Integer skewThreshold { get;set; }
