@@ -8,6 +8,8 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
     private Integer processedRecs = 0;
     private DSD_Settings__c accountSettings;
 
+    private static Integer accountCount;
+
     public DSD_AccountDataSkewBatch() {
         this.accountSettings = DSD_SettingsSupport.getAccountSettings();
         this.accountContactCount = new Map<Id, Integer>();
@@ -57,19 +59,18 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
 
     @AuraEnabled
     public static Integer startBatchJob(String accountSettings){
-        Integer recCount = Database.countQuery('SELECT count() FROM Account');
+        Integer recCount = Database.countQuery('SELECT COUNT() FROM Account');
         DSD_SettingsSupport.SettingsWrapper w = (DSD_SettingsSupport.SettingsWrapper)JSON.deserialize(accountSettings, DSD_SettingsSupport.SettingsWrapper.class);
 
         w.lastRunTotalRecs = recCount;
         w.lastRunProcessedRecs = 0;
-        DSD_SettingsSupport.unwrapAndSaveSettings(w);
+        DSD_SettingsSupport.unwrapAndSaveSettings(w); 
 
         if(recCount > 0){
             w.lastRunJobId = Database.executeBatch(new DSD_AccountDataSkewBatch(), 2000);
             w.lastRunStartTime = System.now();
+            DSD_SettingsSupport.unwrapAndSaveSettings(w);
         }
-
-        DSD_SettingsSupport.unwrapAndSaveSettings(w);
 
         return recCount;
     }
@@ -89,5 +90,11 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
             CompletedDate
             FROM AsyncApexJob 
             WHERE Id = :settings.Last_Run_Job_Id__c];
+    }
+
+    public static Integer getAccountCount(){
+        if(accountCount != null) return accountCount;
+        accountCount = [SELECT COUNT() FROM Account];
+        return accountCount;
     }
 }
