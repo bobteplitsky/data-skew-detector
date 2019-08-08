@@ -5,11 +5,6 @@ public without sharing class DSD_SettingsSupport {
     @TestVisible public static final String SKEW_TYPE_OWNER = 'Owner';
     @TestVisible public static final String SKEW_TYPE_LOOKUP = 'Lookup';
 
-    // settings record name constants
-    // public static final String ACCOUNT_SETTINGS_NAME = 'Account_Settings';
-    // public static final String OWNER_SETTINGS_NAME = 'Owner_Settings';
-    // public static final String LOOKUP_SETTINGS_NAME = 'Lookup_Settings';
-
     public static DSD_Settings__c testAccountSettings;
     private static DSD_Settings__c accountSettings;
     private static DSD_SettingsSupport.SettingsWrapper accountSettingsWrapped;
@@ -34,6 +29,31 @@ public without sharing class DSD_SettingsSupport {
     public static DSD_Settings__c getAccountSettings(Boolean bypassCache) {
         if(bypassCache) accountSettings = null;
         return getAccountSettings();
+    }
+
+    @AuraEnabled
+    public static Boolean saveAccountSettings(String accountSettings){
+        try {
+            return false;
+            // DSD_SettingsSupport.SettingsWrapper w = (DSD_SettingsSupport.SettingsWrapper)JSON.deserialize(accountSettings, DSD_SettingsSupport.SettingsWrapper.class);
+
+            // DSD_Settings__c s = getAccountSettings();
+            // s.Skew_Threshold__c = w.skewThreshold;
+            // if(w.reportingThreshold != null || w.reportingThreshold > 0){
+            //     s.Report_Other_Record_Counts__c = true;
+            //     s.Reporting_Threshold__c = w.reportingThreshold;
+            // }
+            // else{
+            //     s.Report_Other_Record_Counts__c = false;
+            //     s.Reporting_Threshold__c = null;
+            // }
+
+            // update s;
+            // return true;
+        }
+        catch(Exception ex){
+            return false;
+        }
     }
 
     @AuraEnabled
@@ -135,6 +155,7 @@ public without sharing class DSD_SettingsSupport {
         w.skewThreshold = (Integer)s.Skew_Threshold__c;
         w.skewType = s.Skew_Type__c;
         w.parentObjectCount = 0;
+        w.orgName = UserInfo.getOrganizationName();
         return w;
     }
 
@@ -181,5 +202,6 @@ public without sharing class DSD_SettingsSupport {
         @AuraEnabled public Integer reportingThreshold { get;set; }
         @AuraEnabled public Integer skewThreshold { get;set; }
         @AuraEnabled public String skewType { get;set; }
+        @AuraEnabled public String orgName { get;set; }
     }
 }

@@ -1,5 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import getAccountSettingsWrapped from '@salesforce/apex/DSD_SettingsSupport.getAccountSettingsWrapped'
+import saveAccountSettings from '@salesforce/apex/DSD_SettingsSupport.saveAccountSettings'
 import startBatchJob from '@salesforce/apex/DSD_AccountDataSkewBatch.startBatchJob'
 import checkBatchStatus from '@salesforce/apex/DSD_AccountDataSkewBatch.checkBatchStatus'
 
@@ -15,6 +16,11 @@ export default class DsdAccountContainer extends LightningElement {
 	@track lastRunStartTime;
 	@track skewedRecCount;
 	@track skewThreshold;
+	@track otherReportingThreshold;
+	@track orgName;
+	@track showSettings = false;
+	@track showSaveSuccess = false;
+	@track showSaveError = false;
 
 	constructor(){
 		super();
@@ -75,8 +81,7 @@ export default class DsdAccountContainer extends LightningElement {
 				this.skewedRecCount = this.accountSettings.lastRunSkewedRecCount !== 'undefined' ? this.accountSettings.lastRunSkewedRecCount : null;
 				this.lastRunStartTime = this.accountSettings.lastRunStartTime !== 'undefined' ? this.accountSettings.lastRunStartTime : null;
 				this.skewThreshold = this.accountSettings.skewThreshold !== 'undefined' ? this.accountSettings.skewThreshold : null;
-				console.log('this.accountSettings.lastRunStartTime: ' + this.accountSettings.lastRunStartTime);
-				console.log('this.accountSettings.lastRunSkewedRecCount: ' + this.accountSettings.lastRunSkewedRecCount);
+				this.orgName = (this.accountSettings.orgName !== 'undefined') ? this.accountSettings.orgName : '????';
 
 			})
 			.catch(error => {
@@ -84,8 +89,35 @@ export default class DsdAccountContainer extends LightningElement {
 			});
 	}
 
-	// get lastRunStartTime() {
-	// 	console.log('lastRunStartTime: ' + this.lastRunStartTime);
-	// 	return (this.lastRunStartTime !== 'undefined') ? this.lastRunStartTime : 'Never';
-	// }
+	handleToggleSettings(){
+		this.showSettings = this.showSettings ? false : true;
+	}
+
+	handleFieldChange(event){
+		this[event.target.name] = event.target.value;
+	}
+
+	handleSaveSettings(){
+		this.accountSettings.skewThreshold = this.skewThreshold;
+		this.accountSettings.otherReportingThreshold = this.otherReportingThreshold;
+		
+		saveAccountSettings({ accountSettings: JSON.stringify(this.accountSettings)})
+			.then(result => {
+				this.showSettings = false;
+				console.log('result: ' + result);
+				if(result){
+					this.showSaveSuccess = true;
+					this.showSaveError = false;
+
+					// eslint-disable-next-line @lwc/lwc/no-async-operation
+					this._interval = setInterval(() => { 
+						this.showSettingsSaved = false;
+					}, 5000);
+				}
+				else{
+					this.showSaveError = true;
+					this.showSaveSuccess = false;
+				}
+			});
+	}
 }
