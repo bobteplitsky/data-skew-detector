@@ -16,7 +16,7 @@ export default class DsdAccountContainer extends LightningElement {
 	@track lastRunStartTime;
 	@track skewedRecCount;
 	@track skewThreshold;
-	@track otherReportingThreshold;
+	@track reportingThreshold;
 	@track orgName;
 	@track showSettings = false;
 	@track showSaveSuccess = false;
@@ -81,6 +81,7 @@ export default class DsdAccountContainer extends LightningElement {
 				this.skewedRecCount = this.accountSettings.lastRunSkewedRecCount !== 'undefined' ? this.accountSettings.lastRunSkewedRecCount : null;
 				this.lastRunStartTime = this.accountSettings.lastRunStartTime !== 'undefined' ? this.accountSettings.lastRunStartTime : null;
 				this.skewThreshold = this.accountSettings.skewThreshold !== 'undefined' ? this.accountSettings.skewThreshold : null;
+				this.reportingThreshold = this.accountSettings.reportingThreshold !== 'undefined' ? this.accountSettings.reportingThreshold : null;
 				this.orgName = (this.accountSettings.orgName !== 'undefined') ? this.accountSettings.orgName : '????';
 
 			})
@@ -90,16 +91,24 @@ export default class DsdAccountContainer extends LightningElement {
 	}
 
 	handleToggleSettings(){
+		console.log('handleToggleSettings');
 		this.showSettings = this.showSettings ? false : true;
+	}
+
+	handleToggleSaveSuccess(){
+		this.showSaveSuccess = this.showSaveSuccess ? false : true;
 	}
 
 	handleFieldChange(event){
 		this[event.target.name] = event.target.value;
+		console.log('name: ' + event.target.name);
+		console.log('value: ' + event.target.value);
 	}
 
 	handleSaveSettings(){
+		console.log('reportingThreshold: ' + this.reportingThreshold);
 		this.accountSettings.skewThreshold = this.skewThreshold;
-		this.accountSettings.otherReportingThreshold = this.otherReportingThreshold;
+		this.accountSettings.reportingThreshold = this.reportingThreshold;
 		
 		saveAccountSettings({ accountSettings: JSON.stringify(this.accountSettings)})
 			.then(result => {
@@ -111,7 +120,7 @@ export default class DsdAccountContainer extends LightningElement {
 
 					// eslint-disable-next-line @lwc/lwc/no-async-operation
 					this._interval = setInterval(() => { 
-						this.showSettingsSaved = false;
+						this.showSaveSuccess = false;
 					}, 5000);
 				}
 				else{

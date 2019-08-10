@@ -1,6 +1,11 @@
 <apex:page title="Data Skew Detector">
-    <apex:includeLightning />    
-    <div id="mainConfig" />
+    <apex:includeLightning />
+    <apex:slds />
+    <div class="slds-scope">
+        <div style="background-color: #fafaf9; padding:20px; height:800px;">
+            <div id="mainConfig"/>
+        </div>
+    </div>
     <script>
         $Lightning.use("c:dsdHomeApp", function() {
             $Lightning.createComponent("c:dsdHomeContainer",
@@ -12,4 +17,5 @@
             });
         });       
     </script>
+    
 </apex:page>

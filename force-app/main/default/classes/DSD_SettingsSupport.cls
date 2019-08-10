@@ -34,22 +34,22 @@ public without sharing class DSD_SettingsSupport {
     @AuraEnabled
     public static Boolean saveAccountSettings(String accountSettings){
         try {
-            return false;
-            // DSD_SettingsSupport.SettingsWrapper w = (DSD_SettingsSupport.SettingsWrapper)JSON.deserialize(accountSettings, DSD_SettingsSupport.SettingsWrapper.class);
+            //return false;
+            DSD_SettingsSupport.SettingsWrapper w = (DSD_SettingsSupport.SettingsWrapper)JSON.deserialize(accountSettings, DSD_SettingsSupport.SettingsWrapper.class);
 
-            // DSD_Settings__c s = getAccountSettings();
-            // s.Skew_Threshold__c = w.skewThreshold;
-            // if(w.reportingThreshold != null || w.reportingThreshold > 0){
-            //     s.Report_Other_Record_Counts__c = true;
-            //     s.Reporting_Threshold__c = w.reportingThreshold;
-            // }
-            // else{
-            //     s.Report_Other_Record_Counts__c = false;
-            //     s.Reporting_Threshold__c = null;
-            // }
+            DSD_Settings__c s = getAccountSettings();
+            s.Skew_Threshold__c = w.skewThreshold;
+            if(w.reportingThreshold != null || w.reportingThreshold > 0){
+                s.Report_Other_Record_Counts__c = true;
+                s.Reporting_Threshold__c = w.reportingThreshold;
+            }
+            else{
+                s.Report_Other_Record_Counts__c = false;
+                s.Reporting_Threshold__c = null;
+            }
 
-            // update s;
-            // return true;
+            update s;
+            return true;
         }
         catch(Exception ex){
             return false;
