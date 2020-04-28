@@ -1,7 +1,5 @@
 global without sharing class DSD_AccountTestDataGeneratorBatch implements Database.Batchable<Account> {
     
-    // adding comment to master branch 
-    
     private final Integer contactCount;
     private final String accountPrefix;
     private final Integer accountCount;
