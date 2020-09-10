@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>CUST_NAME</field>
-    </columns>
-    <columns>
-        <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>DSD_Data_Skew_Result__c.DSD_Skew_Type__c</field>
-    </columns>
-    <columns>
-        <field>DSD_Data_Skew_Result__c.DSD_Parent_Object_API_Name__c</field>
-    </columns>
-    <columns>
-        <field>DSD_Data_Skew_Result__c.DSD_Child_Object_API_Name__c</field>
     </columns>
     <columns>
         <field>DSD_Data_Skew_Result__c.DSD_Skewed_Record_ID__c</field>
@@ -22,8 +10,21 @@
         <field>DSD_Data_Skew_Result__c.DSD_View_Record__c</field>
     </columns>
     <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_Parent_Object_API_Name__c</field>
+    </columns>
+    <columns>
+        <field>DSD_Data_Skew_Result__c.DSD_Child_Object_API_Name__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>DSD_Data_Skew_Result__c.DSD_Skew_Record_Count__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>DSD_Data_Skew_Result__c.DSD_Skew_Threshold__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
     </columns>
     <description>Shows accounts that have data skew detected</description>
     <filter>
