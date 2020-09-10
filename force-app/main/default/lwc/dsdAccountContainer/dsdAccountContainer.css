@@ -1,0 +1,22 @@
+.dash-card {
+	width: 20%;
+	margin: 0 0 0 20px !important;
+}
+
+.dash-header {
+	font-weight: bold;
+	width: 100%;
+}
+
+.dash-metric {
+	font-size: 300%;
+	width: 100%;
+}
+
+.slds-scope .slds-card {
+	margin-top: 0;
+}
+
+.slds-scope .slds-card+.slds-card{
+	margin-top: 0;
+}
