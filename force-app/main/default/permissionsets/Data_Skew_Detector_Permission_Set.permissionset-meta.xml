@@ -84,6 +84,11 @@
         <field>DSD_Data_Skew_Result__c.DSD_Skewed_Record_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>DSD_Data_Skew_Result__c.DSD_View_Record__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Data Skew Detector Permission Set</label>
     <objectPermissions>
@@ -100,11 +105,11 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>DSD_Owner_Data_Skew</tab>
+        <tab>DSD_Lookup_Data_Skew</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
-        <tab>DSD_Lookup_Data_Skew</tab>
+        <tab>DSD_Owner_Data_Skew</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>
