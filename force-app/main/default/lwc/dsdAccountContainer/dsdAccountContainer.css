@@ -20,3 +20,7 @@
 .slds-scope .slds-card+.slds-card{
 	margin-top: 0;
 }
+
+.summary-data-item{
+	font-size: 125%;
+}

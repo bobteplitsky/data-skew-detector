@@ -3,18 +3,23 @@
 		<div class="slds-notify_container slds-is-relative">
 			<div class="slds-notify slds-notify_toast slds-theme_success" role="status">
 				<span class="slds-assistive-text">success</span>
-				<span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
-				<svg class="slds-icon slds-icon_small" aria-hidden="true">
-					<use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
-				</svg>
+				<span
+					class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top"
+					title="Description of icon when needed">
+					<svg class="slds-icon slds-icon_small" aria-hidden="true">
+						<use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#success">
+						</use>
+					</svg>
 				</span>
 				<div class="slds-notify__content">
 					<h2 class="slds-text-heading_small">Settings Saved!</h2>
 				</div>
 				<div class="slds-notify__close">
-					<button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" onclick={handleToggleSaveSuccess}>
+					<button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close"
+						onclick={handleToggleSaveSuccess}>
 						<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-							<use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+							<use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close">
+							</use>
 						</svg>
 						<span class="slds-assistive-text">Close</span>
 					</button>
@@ -48,83 +53,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="slds-page-header__row slds-page-header__row_gutters">
-			<div class="slds-page-header__col-details">
-				<ul class="slds-page-header__detail-row">
-					<li class="slds-page-header__detail-block">
-						<div class="slds-text-title slds-truncate" title="Accounts in this org">Total Accounts in Org
-						</div>
-						<div class="slds-truncate" title="Account count">
-							<lightning-formatted-number value={parentObjectCount}></lightning-formatted-number>
-						</div>
-					</li>
-					<li class="slds-page-header__detail-block">
-						<div class="slds-text-title slds-truncate" title="Skewed Accounts">Skewed Accounts</div>
-						<template if:true={lastRunStartTime}>
-							<div class="slds-truncate" title="Skewed Account Count">
-								<lightning-formatted-number value={skewedRecCount}></lightning-formatted-number>
-							</div>
-						</template>
-						<template if:false={lastRunStartTime}>
-							<div class="slds-truncate" title="Skewed Account Count">Unknown</div>
-						</template>
-					</li>
-					<li class="slds-page-header__detail-block">
-						<div class="slds-text-title slds-truncate" title="Last scan">Last Scan</div>
-						<template if:true={lastRunStartTime}>
-							<lightning-formatted-date-time value={lastRunStartTime} year="numeric" month="numeric"
-								day="numeric" hour="2-digit" minute="2-digit" second="2-digit" time-zone="UTC"
-								time-zone-name="short" hour12="false"></lightning-formatted-date-time>
-						</template>
-						<template if:false={lastRunStartTime}>
-							<div class="slds-truncate" title="Last scan date/time">Never</div>
-						</template>
-					</li>
-					<li class="slds-page-header__detail-block">
-						<div class="slds-text-title slds-truncate" title="Last Scan Threshold">Last Scan Skew
-							Threshold</div>
-						<template if:true={lastRunStartTime}>
-							<div class="slds-truncate" title="Last Scan Contact Threshold">
-								<lightning-formatted-number value={skewThreshold}></lightning-formatted-number>
-							</div>
-						</template>
-						<template if:false={lastRunStartTime}>
-							<div class="slds-truncate" title="Last Scan Contact Threshold">N/A</div>
-						</template>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<br />
-	<div class="slds-page-header slds-page-header_record-home">
-		<div class="slds-page-header__row">
-			<div class="slds-page-header__col-title">
-				<div class="slds-media">
-					<div class="slds-media__figure">
-						<span class="slds-icon_container slds-icon-standard-account">
-							<svg class="slds-icon slds-page-header__icon" aria-hidden="true">
-								<use
-									xlink:href="/apexpages/slds/latest/assets/icons/standard-sprite/svg/symbols.svg#account">
-								</use>
-							</svg>
-						</span>
-					</div>
-					<div class="slds-media__body">
-						<div class="slds-page-header__name">
-							<div class="slds-page-header__name-title">
-								<h1>
-									<span>Account Skew</span>
-									<span class="slds-page-header__title slds-truncate"
-										title="Org Status">Details</span>
-								</h1>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="slds-page-header__col-actions">
 				<div class="slds-page-header__controls">
 					<div class="slds-page-header__control">
@@ -134,8 +62,8 @@
 									onclick={handleToggleSettings}></lightning-button>
 							</li>
 							<li>
-								<lightning-button label="Scan for Skewed Accounts" title="Scan for Account Skew"
-									slot="actions" onclick={handleRun}></lightning-button>
+								<lightning-button disabled={buttonDisabled} label="Scan for Skewed Accounts" title="Scan for Account Skew"
+									slot="actions" onclick={handleRunClick}></lightning-button>
 							</li>
 						</ul>
 					</div>
@@ -144,28 +72,83 @@
 		</div>
 		<div class="slds-page-header__row slds-page-header__row_gutters">
 			<div class="slds-page-header__col-details">
-				<div class="slds-page-header__detail-row">
-					<template if:false={lastRunStartTime}>
-						<div class="slds-align_absolute-center">
-							<div class="slds-illustration slds-illustration_small">
-								<img src="/img/chatter/OpenRoad.svg" class="slds-illustration__svg" alt="" />
-								<div class="slds-text-longform">
-									<h3 class="slds-text-heading_medium">Scan your org to get started.</h3>
-									<p class="slds-text-body_regular">Lorem ipsum dolor sit amet, consectetur</p>
-									
+				<ul class="slds-page-header__detail-row">
+					<li class="slds-page-header__detail-block">
+						<div class="slds-text-title slds-truncate" title="Accounts in this org">Total Accounts in Org
+						</div>
+						<div class="slds-truncate summary-data-item" title="Account count">
+							<lightning-formatted-number value={parentObjectCount}></lightning-formatted-number>
+						</div>
+					</li>
+					<li class="slds-page-header__detail-block">
+						<div class="slds-text-title slds-truncate" title="Skewed Accounts">Skewed Accounts</div>
+						<template if:false={isBatchRunning}>
+							<div class="slds-truncate summary-data-item" title="Skewed Account Count">
+								<a href={accountReportUrl} target="_blank"><lightning-formatted-number value={skewedRecCount}></lightning-formatted-number></a>
+							</div>
+						</template>
+						<template if:true={isBatchRunning}>
+							<div class="slds-truncate summary-data-item" title="Skewed Account Count">{skewedRecCount}
+							</div>
+						</template>
+					</li>
+					<li class="slds-page-header__detail-block">
+						<div class="slds-text-title slds-truncate" title="Last scan">Last Scan</div>
+						<template if:false={isBatchRunning}>
+							<lightning-formatted-date-time class="summary-data-item" value={lastRunStartTime}
+								year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"
+								hour12="false">
+							</lightning-formatted-date-time>
+						</template>
+						<template if:true={isBatchRunning}>
+							<div class="slds-truncate summary-data-item" title="Last scan date/time">{lastRunStartTime}
+							</div>
+						</template>
+					</li>
+					<li class="slds-page-header__detail-block">
+						<div class="slds-text-title slds-truncate" style="padding-right:50px;" title="Scan Status">Batch
+							Status</div>
+						<div class="summary-data-item">{batchStatus}</div>
+						<template if:false={isBatchCompleted}>
+							<div class="slds-progress-ring">
+								<div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0"
+									aria-valuemax="100" aria-valuenow={fill}>
+									<svg viewBox="-1 -1 2 2">
+										<path class="slds-progress-ring__path" id="slds-progress-ring-path-38"
+											d={progressRing_d}></path>
+									</svg>
 								</div>
-								<div>
-									<lightning-button variant="brand" label="Scan for Skewed Accounts"
-										title="Brand action" onclick={handleRun}></lightning-button>
+								<div class="slds-progress-ring__content"></div>
+							</div>
+						</template>
+						<template if:true={isBatchCompleted}>
+							<div class="slds-progress-ring slds-progress-ring_complete">
+								<div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0"
+									aria-valuemax="100" aria-valuenow="100">
+									<svg viewBox="-1 -1 2 2">
+										<circle class="slds-progress-ring__path" id="slds-progress-ring-path-42" cx="0"
+											cy="0" r="1"></circle>
+									</svg>
+								</div>
+								<div class="slds-progress-ring__content">
+									<span class="slds-icon_container slds-icon-utility-check" title="Complete">
+										<svg class="slds-icon" aria-hidden="true">
+											<use
+												xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#check">
+											</use>
+										</svg>
+										<span class="slds-assistive-text">Complete</span>
+									</span>
 								</div>
 							</div>
-						</div>
-					</template>
-				</div>
+						</template>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 
+	<br />
 	<template if:true={showSettings}>
 		<div>
 			<section role="dialog" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -181,19 +164,24 @@
 							</svg>
 							<span class="slds-assistive-text">Close</span>
 						</button>
-						<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Account Skew Settings</h2>
+						<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Account Skew Settings
+						</h2>
 					</header>
 					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
 						<!-- settings form -->
 						<div class="slds-form">
 							<div class="slds-form-element slds-form-element_stacked">
 								<div class="slds-form-element__control">
-									<lightning-input name="skewThreshold" type="number" field-level-help="foo" label="Skew Threshold" value={skewThreshold} onchange={handleFieldChange}></lightning-input>
+									<lightning-input name="skewThreshold" type="number" field-level-help="foo"
+										label="Skew Threshold" value={skewThreshold} onchange={handleFieldChange}>
+									</lightning-input>
 								</div>
 							</div>
 							<div class="slds-form-element slds-form-element_stacked">
 								<div class="slds-form-element__control">
-									<lightning-input type="number" field-level-help="foo" name="reportingThreshold" label="Other Reporting Threshold" value={reportingThreshold} onchange={handleFieldChange}></lightning-input>
+									<lightning-input type="number" field-level-help="foo" name="reportingThreshold"
+										label="Other Reporting Threshold" value={reportingThreshold}
+										onchange={handleFieldChange}></lightning-input>
 								</div>
 							</div>
 						</div>
@@ -208,30 +196,4 @@
 		</div>
 	</template>
 	<br><br>
-
-	<div class="slds-grid slds-gutters">
-		<div class="slds-col">
-			<lightning-card variant="Narrow" title="Account Data Skew" icon-name="standard:account">
-				<lightning-button label="Run" title="Run" slot="actions" onclick={handleRun}></lightning-button>
-				<p class="slds-p-horizontal_small">
-					<template if:true={accountSettings}>
-						<p>Status: {batchStatus}</p>
-						<p>Total accounts to process: {totalRecsToProcess}</p>
-						<p>Progress: {progress}%</p>
-						<lightning-progress-bar value={progress} variant="circular"></lightning-progress-bar>
-					</template>
-					<template if:true={error}>
-						<c-error-panel errors={error}></c-error-panel>
-					</template>
-				</p>
-				<p slot="footer">Card Footer</p>
-			</lightning-card>
-		</div>
-		<div class="slds-col">
-			<span>2</span>
-		</div>
-		<div class="slds-col">
-			<span>3</span>
-		</div>
-	</div>
 </template>

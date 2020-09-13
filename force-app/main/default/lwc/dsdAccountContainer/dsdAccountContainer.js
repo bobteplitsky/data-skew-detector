@@ -1,93 +1,135 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, wire } from 'lwc'
+import { refreshApex } from '@salesforce/apex'
 import getAccountSettingsWrapped from '@salesforce/apex/DSD_SettingsSupport.getAccountSettingsWrapped'
 import saveAccountSettings from '@salesforce/apex/DSD_SettingsSupport.saveAccountSettings'
 import startBatchJob from '@salesforce/apex/DSD_AccountDataSkewBatch.startBatchJob'
 import checkBatchStatus from '@salesforce/apex/DSD_AccountDataSkewBatch.checkBatchStatus'
+import getAccountReportId from '@salesforce/apex/DSD_UtilityFunctions.getAccountReportId'
 
 export default class DsdAccountContainer extends LightningElement { 
-	@track accountSettings;
-	@track error;
-	@track progress = 0;
-	@track isProgressing = false;
-	@track totalRecsToProcess;
-	@track batchStatus;
-	@track batchObject;
-	@track parentObjectCount;
-	@track lastRunStartTime;
-	@track skewedRecCount;
-	@track skewThreshold;
-	@track reportingThreshold;
-	@track orgName;
-	@track showSettings = false;
-	@track showSaveSuccess = false;
-	@track showSaveError = false;
+	error;
+	fill = 0;
+	totalRecsToProcess;
+	batchObject;
+	batchStatus;
+	accountSettingsWired;
+	accountSettings;
+	isBatchCompleted;
+	isBatchRunning;
+	parentObjectCount;
+	lastRunStartTime;
+	skewedRecCount;
+	skewThreshold;
+	reportingThreshold;
+	showSettings;
+	showSaveSuccess;
+	showSaveError;
+	progressRing_d;
+	buttonDisabled;
+	accountReportUrl;
 
-	constructor(){
-		super();
-		this.getAccountSettings();
+	connectedCallback(){
+		console.log('connectedCallback');
+		this.getBatchStatus()
+			.then(() =>{
+				if(this.batchObject != undefined){
+					console.log('connectedCallback batchObject: ' + JSON.stringify(this.batchObject));
+					if(this.isBatchRunning){
+						this.handleRun(false);
+					}
+				}
+			})
 	}
 
-	handleRun(){
-		startBatchJob({ accountSettings: JSON.stringify(this.accountSettings) })
+	@wire(getAccountSettingsWrapped)
+	getAccountSettings(value){
+		console.log('getAccountSettings');
+		this.accountSettingsWired = value;
+		const {data, error} = value;
+		if(data){
+			console.log('getAccountSettings data: ' + JSON.stringify(data));
+			this.accountSettings = data;
+			this.parentObjectCount = data.parentObjectCount;
+			this.skewedRecCount = data.lastRunSkewedRecCount;
+			this.lastRunStartTime = data.lastRunStartTime;
+		}
+		if(error){
+			console.log('getAccountSettings error: ' + JSON.stringify(error));
+		}
+	}
+
+	@wire(getAccountReportId)
+	getReportId({error, data}){
+		console.log('getReportId data: ' + JSON.stringify(data));
+		if(data) this.accountReportUrl = '/lightning/r/Report/' + data + '/view';
+	}
+
+	//@wire(checkBatchStatus)
+	async getBatchStatus(){
+		return checkBatchStatus()
 			.then(result => {
-				this.isProgressing = true;
-				this.totalRecsToProcess = result;
-				// eslint-disable-next-line @lwc/lwc/no-async-operation
-				this._interval = setInterval(() => { 
-					this.checkStatus();
-				}, 2000);
+				console.log('getBatchStatus result: ' + JSON.stringify(result));
+				this.batchObject = result;
+				this.batchStatus = result.Status;
+				this.isBatchCompleted = result.Status === 'Completed';
+				this.isBatchRunning = !this.isBatchCompleted;
+			})
+	}
+
+	montiorBatch(){
+		this.getBatchStatus()
+			.then(() => {
+				let jobItemsProcessed = this.batchObject.JobItemsProcessed;
+				let totalJobItems = this.batchObject.TotalJobItems;
+				let fillPercent = Math.round((jobItemsProcessed/totalJobItems) * 100) / 100;
+				this.fill = this.fillPercent * 100;
+				
+				let isLong = this.fillPercent > .5 ? 1 : 0;
+				let arcX = Math.round((Math.cos(2 * Math.PI * fillPercent)) * 100) / 100;
+				let arcY = Math.round((Math.sin(2 * Math.PI * fillPercent)) * 100) / 100;
+				this.progressRing_d = "M 1 0 A 1 1 0 " + isLong + " 1 " + arcX + " " + arcY + "L 0 0";
+				
+				console.log('fillPercent:' + fillPercent);
+				
+				if(this.isBatchCompleted) this.finishRun();
 			})
 			.catch(error => {
-				this.error = error;
-			});
+				console.log('error: ' + JSON.stringify(error));
+			})
 	}
 
-	checkStatus(){
-		checkBatchStatus({ accountSettings: JSON.stringify(this.accountSettings)})
-			.then(result => { 
-				this.batchStatus = result.Status; 
-				this.batchObject = result;
-  
-				let jobItemsProcessed = 0;
-				let totalJobItems = 0;
+	handleRunClick(){
+		this.handleRun(true);
+	}
 
-				if(this.batchStatus === 'Completed') {
-					this.progress = 100;
-					this.isProgressing = false;
-					clearInterval(this._interval);
-					this.finishRun();
-				}
-				else if (this.batchStatus === 'Processing') {
-					this.isProgressing = true;
-					jobItemsProcessed = this.batchObject.JobItemsProcessed;
-					totalJobItems = this.batchObject.TotalJobItems;
-				}
+	handleRun(newRun){
+		this.skewedRecCount = '--';
+		this.lastRunStartTime = '--';
+		this.batchStatus = '--';
+		this.buttonDisabled = true;
 
-				if(this.isProgressing) {
-					this.progress = parseInt((jobItemsProcessed/totalJobItems) * 100, 10);
-				}
-			});
+		if(newRun){
+			startBatchJob({ accountSettings: JSON.stringify(this.accountSettings) })
+				.then(result => {
+					this.totalRecsToProcess = result;
+					this.montiorBatch();
+				})
+				.catch(error => {
+					this.error = error;
+				})
+		}
+
+		// eslint-disable-next-line @lwc/lwc/no-async-operation
+		this._interval = setInterval(() => { 
+			this.montiorBatch();
+		}, 3000);
 	}
 
 	finishRun(){
-		this.getAccountSettings();
-	}
-
-	getAccountSettings() {
-		getAccountSettingsWrapped()
-			.then(result => {
-				this.accountSettings = result;
-				this.parentObjectCount = this.accountSettings.parentObjectCount;
-				this.skewedRecCount = this.accountSettings.lastRunSkewedRecCount !== 'undefined' ? this.accountSettings.lastRunSkewedRecCount : null;
-				this.lastRunStartTime = this.accountSettings.lastRunStartTime !== 'undefined' ? this.accountSettings.lastRunStartTime : null;
-				this.skewThreshold = this.accountSettings.skewThreshold !== 'undefined' ? this.accountSettings.skewThreshold : null;
-				this.reportingThreshold = this.accountSettings.reportingThreshold !== 'undefined' ? this.accountSettings.reportingThreshold : null;
-				this.orgName = (this.accountSettings.orgName !== 'undefined') ? this.accountSettings.orgName : '????';
-
-			})
-			.catch(error => {
-				this.error = error;
-			});
+		console.log('finishRun');
+		this.buttonDisabled = false;
+		clearInterval(this._interval);
+		refreshApex(this.accountSettingsWired);
 	}
 
 	handleToggleSettings(){
@@ -121,7 +163,7 @@ export default class DsdAccountContainer extends LightningElement {
 					// eslint-disable-next-line @lwc/lwc/no-async-operation
 					this._interval = setInterval(() => { 
 						this.showSaveSuccess = false;
-					}, 5000);
+					}, 3000);
 				}
 				else{
 					this.showSaveError = true;

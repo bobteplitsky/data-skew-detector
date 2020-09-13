@@ -10,7 +10,6 @@ public without sharing class DSD_SettingsSupport {
     private static DSD_SettingsSupport.SettingsWrapper accountSettingsWrapped;
 
     public static DSD_Settings__c getAccountSettings() {
-        
         if(accountSettings != null) return accountSettings;
 
         if(Test.isRunningTest() && testAccountSettings != null) {
@@ -56,7 +55,7 @@ public without sharing class DSD_SettingsSupport {
         }
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static DSD_SettingsSupport.SettingsWrapper getAccountSettingsWrapped() {
         if(accountSettingsWrapped != null) return accountSettingsWrapped;
         accountSettingsWrapped = wrapSettings(getAccountSettings());

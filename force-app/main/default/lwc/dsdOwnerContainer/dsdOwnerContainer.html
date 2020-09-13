@@ -4,7 +4,8 @@
 			<lightning-card variant="Narrow" title="Owner Data Skew" icon-name="standard:account">
 				<lightning-button label="Run" title="Run" slot="actions" onclick={handleRun}></lightning-button>
 				<p class="slds-p-horizontal_small">
-					<template if:true={accountSettings}>
+					Coming soon
+					<!-- <template if:true={accountSettings}>
 						<p>Status: {batchStatus}</p>
 						<p>Total accounts to process: {totalRecsToProcess}</p>
 						<p>Progress: {progress}%</p>
@@ -12,16 +13,14 @@
 					</template>
 					<template if:true={error}>
 						<c-error-panel errors={error}></c-error-panel>
-					</template>
+					</template> -->
 				</p>
 				<p slot="footer">Card Footer</p>
 			</lightning-card>
 		</div>
 		<div class="slds-col">
-			<span>2</span>
 		</div> 
-		<div class="slds-col"> 
-			<span>3</span> 
+		<div class="slds-col">
 		</div>
 	</div>
 </template>

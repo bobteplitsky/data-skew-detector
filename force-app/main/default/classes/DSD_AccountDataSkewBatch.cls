@@ -59,6 +59,8 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
 
     @AuraEnabled
     public static Integer startBatchJob(String accountSettings){
+        System.debug('accountSettings: ' + accountSettings);
+
         Integer recCount = Database.countQuery('SELECT COUNT() FROM Account');
         DSD_SettingsSupport.SettingsWrapper w = (DSD_SettingsSupport.SettingsWrapper)JSON.deserialize(accountSettings, DSD_SettingsSupport.SettingsWrapper.class);
 
@@ -67,7 +69,7 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
         DSD_SettingsSupport.unwrapAndSaveSettings(w); 
 
         if(recCount > 0){
-            w.lastRunJobId = Database.executeBatch(new DSD_AccountDataSkewBatch(), 2000);
+            w.lastRunJobId = Database.executeBatch(new DSD_AccountDataSkewBatch(), 25);
             w.lastRunStartTime = System.now();
             DSD_SettingsSupport.unwrapAndSaveSettings(w);
         }
@@ -77,10 +79,9 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
 
     @AuraEnabled
     public static AsyncApexJob checkBatchStatus(){
-        // DSD_SettingsSupport.SettingsWrapper w = (DSD_SettingsSupport.SettingsWrapper)JSON.deserialize(accountSettings, DSD_SettingsSupport.SettingsWrapper.class);
-
         DSD_Settings__c settings = DSD_SettingsSupport.getAccountSettings(true);
-        return [SELECT Status,
+        
+        List<AsyncApexJob> jobs = [SELECT Status,
             TotalJobItems, 
             JobItemsProcessed,
             LastProcessed,
@@ -90,6 +91,9 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
             CompletedDate
             FROM AsyncApexJob 
             WHERE Id = :settings.Last_Run_Job_Id__c];
+
+        if(jobs.size() == 0) return null;
+        return jobs[0];
     }
 
     public static Integer getAccountCount(){
