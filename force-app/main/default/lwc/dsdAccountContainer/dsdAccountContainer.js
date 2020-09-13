@@ -8,7 +8,8 @@ import getAccountReportId from '@salesforce/apex/DSD_UtilityFunctions.getAccount
 
 export default class DsdAccountContainer extends LightningElement { 
 	error;
-	fill = 0;
+	progress = 0;
+	fillPrcent = 0;
 	totalRecsToProcess;
 	batchObject;
 	batchStatus;
@@ -64,7 +65,6 @@ export default class DsdAccountContainer extends LightningElement {
 		if(data) this.accountReportUrl = '/lightning/r/Report/' + data + '/view';
 	}
 
-	//@wire(checkBatchStatus)
 	async getBatchStatus(){
 		return checkBatchStatus()
 			.then(result => {
@@ -73,6 +73,7 @@ export default class DsdAccountContainer extends LightningElement {
 				this.batchStatus = result.Status;
 				this.isBatchCompleted = result.Status === 'Completed';
 				this.isBatchRunning = !this.isBatchCompleted;
+				if(this.isBatchCompleted) this.progress=100;
 			})
 	}
 
@@ -81,15 +82,7 @@ export default class DsdAccountContainer extends LightningElement {
 			.then(() => {
 				let jobItemsProcessed = this.batchObject.JobItemsProcessed;
 				let totalJobItems = this.batchObject.TotalJobItems;
-				let fillPercent = Math.round((jobItemsProcessed/totalJobItems) * 100) / 100;
-				this.fill = this.fillPercent * 100;
-				
-				let isLong = this.fillPercent > .5 ? 1 : 0;
-				let arcX = Math.round((Math.cos(2 * Math.PI * fillPercent)) * 100) / 100;
-				let arcY = Math.round((Math.sin(2 * Math.PI * fillPercent)) * 100) / 100;
-				this.progressRing_d = "M 1 0 A 1 1 0 " + isLong + " 1 " + arcX + " " + arcY + "L 0 0";
-				
-				console.log('fillPercent:' + fillPercent);
+				this.progress = Math.round((jobItemsProcessed/totalJobItems) * 100);
 				
 				if(this.isBatchCompleted) this.finishRun();
 			})
@@ -129,7 +122,10 @@ export default class DsdAccountContainer extends LightningElement {
 		console.log('finishRun');
 		this.buttonDisabled = false;
 		clearInterval(this._interval);
-		refreshApex(this.accountSettingsWired);
+		refreshApex(this.accountSettingsWired)
+			.then(() =>{
+				this.getAccountSettings(this.accountSettingsWired);
+			})
 	}
 
 	handleToggleSettings(){

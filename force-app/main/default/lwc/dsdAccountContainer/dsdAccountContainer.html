@@ -109,39 +109,7 @@
 						<div class="slds-text-title slds-truncate" style="padding-right:50px;" title="Scan Status">Batch
 							Status</div>
 						<div class="summary-data-item">{batchStatus}</div>
-						<template if:false={isBatchCompleted}>
-							<div class="slds-progress-ring">
-								<div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0"
-									aria-valuemax="100" aria-valuenow={fill}>
-									<svg viewBox="-1 -1 2 2">
-										<path class="slds-progress-ring__path" id="slds-progress-ring-path-38"
-											d={progressRing_d}></path>
-									</svg>
-								</div>
-								<div class="slds-progress-ring__content"></div>
-							</div>
-						</template>
-						<template if:true={isBatchCompleted}>
-							<div class="slds-progress-ring slds-progress-ring_complete">
-								<div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0"
-									aria-valuemax="100" aria-valuenow="100">
-									<svg viewBox="-1 -1 2 2">
-										<circle class="slds-progress-ring__path" id="slds-progress-ring-path-42" cx="0"
-											cy="0" r="1"></circle>
-									</svg>
-								</div>
-								<div class="slds-progress-ring__content">
-									<span class="slds-icon_container slds-icon-utility-check" title="Complete">
-										<svg class="slds-icon" aria-hidden="true">
-											<use
-												xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#check">
-											</use>
-										</svg>
-										<span class="slds-assistive-text">Complete</span>
-									</span>
-								</div>
-							</div>
-						</template>
+						<lightning-progress-ring value={progress} variant="base-autocomplete"> </lightning-progress-ring>
 					</li>
 				</ul>
 			</div>
