@@ -3,6 +3,7 @@ import { refreshApex } from '@salesforce/apex'
 import getAccountSettingsWrapped from '@salesforce/apex/DSD_SettingsSupport.getAccountSettingsWrapped'
 import saveAccountSettings from '@salesforce/apex/DSD_SettingsSupport.saveAccountSettings'
 import startBatchJob from '@salesforce/apex/DSD_AccountDataSkewBatch.startBatchJob'
+import abortBatchJob from '@salesforce/apex/DSD_AccountDataSkewBatch.abortBatchJob'
 import checkBatchStatus from '@salesforce/apex/DSD_AccountDataSkewBatch.checkBatchStatus'
 import getAccountReportId from '@salesforce/apex/DSD_UtilityFunctions.getAccountReportId'
 
@@ -16,6 +17,7 @@ export default class DsdAccountContainer extends LightningElement {
 	accountSettingsWired;
 	accountSettings;
 	isBatchCompleted;
+	isBatchAborted;
 	isBatchRunning;
 	parentObjectCount;
 	lastRunStartTime;
@@ -25,20 +27,21 @@ export default class DsdAccountContainer extends LightningElement {
 	showSettings;
 	showSaveSuccess;
 	showSaveError;
+	showScanConfirm;
+	showAbortConfirm;
 	progressRing_d;
 	buttonDisabled;
 	accountReportUrl;
+	ringVariant;
 
 	connectedCallback(){
 		console.log('connectedCallback');
+
 		this.getBatchStatus()
 			.then(() =>{
-				if(this.batchObject != undefined){
-					console.log('connectedCallback batchObject: ' + JSON.stringify(this.batchObject));
-					if(this.isBatchRunning){
-						this.handleRun(false);
-					}
-				}
+				if(this.batchObject == undefined) return;
+				console.log('connectedCallback batchObject: ' + JSON.stringify(this.batchObject));
+				if(this.isBatchRunning) this.handleRun(false);
 			})
 	}
 
@@ -70,11 +73,19 @@ export default class DsdAccountContainer extends LightningElement {
 			.then(result => {
 				console.log('getBatchStatus result: ' + JSON.stringify(result));
 				this.batchObject = result;
-				this.batchStatus = result.Status;
-				this.isBatchCompleted = result.Status === 'Completed';
-				this.isBatchRunning = !this.isBatchCompleted;
-				if(this.isBatchCompleted) this.progress=100;
+				this.setBatchStatus();
 			})
+	}
+
+	setBatchStatus(){
+		if(!this.batchObject) return;
+
+		this.batchStatus = this.batchObject.Status;
+		this.isBatchCompleted = this.batchObject.Status === 'Completed';
+		this.isBatchAborted = this.batchObject.Status === 'Aborted';
+		this.isBatchRunning = !this.isBatchCompleted && !this.isBatchAborted;
+		if(this.isBatchCompleted) this.progress=100;
+		this.ringVariant = this.isBatchAborted ? "expired" : "base-autocomplete";
 	}
 
 	montiorBatch(){
@@ -91,8 +102,39 @@ export default class DsdAccountContainer extends LightningElement {
 			})
 	}
 
+	handleAbortClick(){
+		this.showAbortConfirm = true;
+	}
+
+	handleAbortConfirm(){
+		this.showAbortConfirm = false;
+		this.handleAbort();
+	}
+
+	handleAbortCancel(){
+		this.showAbortConfirm = false;
+	}
+
+	handleAbort(){
+		abortBatchJob()
+			.then(result =>{
+				this.progress=0;
+				this.montiorBatch();
+				this.finishRun();
+			})
+	}
+
 	handleRunClick(){
+		this.showScanConfirm = true;
+	}
+
+	handleRunConfirm(){
+		this.showScanConfirm = false;
 		this.handleRun(true);
+	}
+
+	handleRunCancel(){
+		this.showScanConfirm = false;
 	}
 
 	handleRun(newRun){

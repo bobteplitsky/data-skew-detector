@@ -1,4 +1,5 @@
 <template>
+	<!-- save toast -->
 	<template if:true={showSaveSuccess}>
 		<div class="slds-notify_container slds-is-relative">
 			<div class="slds-notify slds-notify_toast slds-theme_success" role="status">
@@ -27,7 +28,9 @@
 			</div>
 		</div>
 	</template>
+	<!-- end save toast -->
 
+	<!-- main UI -->
 	<div class="slds-page-header slds-page-header_record-home">
 		<div class="slds-page-header__row">
 			<div class="slds-page-header__col-title">
@@ -58,13 +61,19 @@
 					<div class="slds-page-header__control">
 						<ul class="slds-button-group-list">
 							<li>
-								<lightning-button label="Settings" title="Settings" slot="actions"
-									onclick={handleToggleSettings}></lightning-button>
+								<lightning-button label="Settings" title="Settings" slot="actions" onclick={handleToggleSettings}></lightning-button>
 							</li>
+							<template if:false={isBatchRunning}>
 							<li>
 								<lightning-button disabled={buttonDisabled} label="Scan for Skewed Accounts" title="Scan for Account Skew"
 									slot="actions" onclick={handleRunClick}></lightning-button>
 							</li>
+							</template>
+							<template if:true={isBatchRunning}>
+							<li>
+								<lightning-button label="Abort Scan" title="Abort Scan" slot="actions" onclick={handleAbortClick}></lightning-button>
+							</li>
+							</template>
 						</ul>
 					</div>
 				</div>
@@ -106,15 +115,15 @@
 						</template>
 					</li>
 					<li class="slds-page-header__detail-block">
-						<div class="slds-text-title slds-truncate" style="padding-right:50px;" title="Scan Status">Batch
-							Status</div>
+						<div class="slds-text-title slds-truncate" style="padding-right:50px;" title="Scan Status">Scan Status</div>
 						<div class="summary-data-item">{batchStatus}</div>
-						<lightning-progress-ring value={progress} variant="base-autocomplete"> </lightning-progress-ring>
+						<lightning-progress-ring class="myring" value={progress} variant={ringVariant}> </lightning-progress-ring>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
+	<!-- end main UI -->
 
 	<br />
 	<template if:true={showSettings}>
@@ -157,6 +166,68 @@
 					<footer class="slds-modal__footer">
 						<button class="slds-button slds-button_neutral" onclick={handleToggleSettings}>Cancel</button>
 						<button class="slds-button slds-button_brand" onclick={handleSaveSettings}>Save</button>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</div>
+	</template>
+
+	<template if:true={showScanConfirm}>
+		<div>
+			<section role="dialog" aria-labelledby="modal-heading-01" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onlick={handleToggleSettings}>
+							<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+								<use
+									xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close">
+								</use>
+							</svg>
+							<span class="slds-assistive-text">Close</span>
+						</button>
+						<h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Scan for Skewed Accounts?
+						</h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+						Scan <lightning-formatted-number value={parentObjectCount}></lightning-formatted-number> accounts for data skew?
+					</div>
+					<footer class="slds-modal__footer">
+						<button class="slds-button slds-button_neutral" onclick={handleRunCancel}>Cancel</button>
+						<button class="slds-button slds-button_brand" onclick={handleRunConfirm}>Yes</button>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</div>
+	</template>
+
+	<template if:true={showAbortConfirm}>
+		<div>
+			<section role="dialog" aria-labelledby="modal-heading-01" aria-modal="true"
+				aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onlick={handleToggleSettings}>
+							<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+								<use
+									xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close">
+								</use>
+							</svg>
+							<span class="slds-assistive-text">Close</span>
+						</button>
+						<h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Abort Account Scan?
+						</h2>
+					</header>
+					<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+						Scan {parentObjectCount} accounts for data skew?
+					</div>
+					<footer class="slds-modal__footer">
+						<button class="slds-button slds-button_neutral" onclick={handleAbortCancel}>Cancel</button>
+						<button class="slds-button slds-button_brand" onclick={handleAbortConfirm}>Yes</button>
 					</footer>
 				</div>
 			</section>

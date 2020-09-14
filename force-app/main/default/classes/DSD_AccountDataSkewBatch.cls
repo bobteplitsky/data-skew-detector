@@ -69,12 +69,25 @@ public without sharing class DSD_AccountDataSkewBatch implements Database.Batcha
         DSD_SettingsSupport.unwrapAndSaveSettings(w); 
 
         if(recCount > 0){
-            w.lastRunJobId = Database.executeBatch(new DSD_AccountDataSkewBatch(), 25);
+            w.lastRunJobId = Database.executeBatch(new DSD_AccountDataSkewBatch(), 20);
             w.lastRunStartTime = System.now();
             DSD_SettingsSupport.unwrapAndSaveSettings(w);
         }
 
         return recCount;
+    }
+
+    @AuraEnabled
+    public static Boolean abortBatchJob(){
+        try{
+            DSD_Settings__c settings = DSD_SettingsSupport.getAccountSettings();
+            if(settings.Last_Run_Job_ID__c != null) System.abortJob(settings.Last_Run_Job_ID__c);
+            return true;
+        }
+        catch(Exception ex){
+            System.debug('Exception aborting job: ' + ex.getMessage());
+            return false;
+        }
     }
 
     @AuraEnabled
