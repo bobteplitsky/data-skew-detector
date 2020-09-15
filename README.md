@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-# SFDX App
+# Salesforce Data Skew Detector
+Is an app that runs in a Salesforce org and will detect and report on account, owner, and lookup data skew.
 
-## Dev, Build and Test
-
-## Resources
-
-## Description of Files and Directories
-
-## Issues
-=======
-# data-skew-detector
->>>>>>> 80d6e154b193bd44340f61addcd80628d12f5fb7
