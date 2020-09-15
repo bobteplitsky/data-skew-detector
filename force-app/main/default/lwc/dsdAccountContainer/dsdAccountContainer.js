@@ -1,4 +1,4 @@
-import { LightningElement, wire } from 'lwc'
+import { LightningElement, wire, track } from 'lwc'
 import { refreshApex } from '@salesforce/apex'
 import getAccountSettingsWrapped from '@salesforce/apex/DSD_SettingsSupport.getAccountSettingsWrapped'
 import saveAccountSettings from '@salesforce/apex/DSD_SettingsSupport.saveAccountSettings'
@@ -15,7 +15,7 @@ export default class DsdAccountContainer extends LightningElement {
 	batchObject;
 	batchStatus;
 	accountSettingsWired;
-	accountSettings;
+	@track accountSettings;
 	isBatchCompleted;
 	isBatchAborted;
 	isBatchRunning;
@@ -32,7 +32,7 @@ export default class DsdAccountContainer extends LightningElement {
 	progressRing_d;
 	buttonDisabled;
 	accountReportUrl;
-	ringVariant;
+	progressRingVariant;
 
 	connectedCallback(){
 		console.log('connectedCallback');
@@ -52,7 +52,7 @@ export default class DsdAccountContainer extends LightningElement {
 		const {data, error} = value;
 		if(data){
 			console.log('getAccountSettings data: ' + JSON.stringify(data));
-			this.accountSettings = data;
+			this.accountSettings = {...data};
 			this.parentObjectCount = data.parentObjectCount;
 			this.skewedRecCount = data.lastRunSkewedRecCount;
 			this.lastRunStartTime = data.lastRunStartTime;
@@ -79,13 +79,12 @@ export default class DsdAccountContainer extends LightningElement {
 
 	setBatchStatus(){
 		if(!this.batchObject) return;
-
 		this.batchStatus = this.batchObject.Status;
 		this.isBatchCompleted = this.batchObject.Status === 'Completed';
 		this.isBatchAborted = this.batchObject.Status === 'Aborted';
 		this.isBatchRunning = !this.isBatchCompleted && !this.isBatchAborted;
 		if(this.isBatchCompleted) this.progress=100;
-		this.ringVariant = this.isBatchAborted ? "expired" : "base-autocomplete";
+		this.progressRingVariant = this.isBatchAborted ? "expired" : "base-autocomplete";
 	}
 
 	montiorBatch(){
@@ -99,6 +98,16 @@ export default class DsdAccountContainer extends LightningElement {
 			})
 			.catch(error => {
 				console.log('error: ' + JSON.stringify(error));
+			})
+	}
+
+	finishRun(){
+		console.log('finishRun');
+		this.buttonDisabled = false;
+		clearInterval(this._interval);
+		refreshApex(this.accountSettingsWired)
+			.then(() =>{
+				this.getAccountSettings(this.accountSettingsWired);
 			})
 	}
 
@@ -160,31 +169,6 @@ export default class DsdAccountContainer extends LightningElement {
 		}, 3000);
 	}
 
-	finishRun(){
-		console.log('finishRun');
-		this.buttonDisabled = false;
-		clearInterval(this._interval);
-		refreshApex(this.accountSettingsWired)
-			.then(() =>{
-				this.getAccountSettings(this.accountSettingsWired);
-			})
-	}
-
-	handleToggleSettings(){
-		console.log('handleToggleSettings');
-		this.showSettings = this.showSettings ? false : true;
-	}
-
-	handleToggleSaveSuccess(){
-		this.showSaveSuccess = this.showSaveSuccess ? false : true;
-	}
-
-	handleFieldChange(event){
-		this[event.target.name] = event.target.value;
-		console.log('name: ' + event.target.name);
-		console.log('value: ' + event.target.value);
-	}
-
 	handleSaveSettings(){
 		console.log('reportingThreshold: ' + this.reportingThreshold);
 		this.accountSettings.skewThreshold = this.skewThreshold;
@@ -208,5 +192,20 @@ export default class DsdAccountContainer extends LightningElement {
 					this.showSaveSuccess = false;
 				}
 			});
+	}
+
+	handleToggleSettings(){
+		console.log('handleToggleSettings');
+		this.showSettings = this.showSettings ? false : true;
+	}
+
+	handleToggleSaveSuccess(){
+		this.showSaveSuccess = this.showSaveSuccess ? false : true;
+	}
+
+	handleFieldChange(event){
+		this[event.target.name] = event.target.value;
+		console.log('name: ' + event.target.name);
+		console.log('value: ' + event.target.value);
 	}
 }
