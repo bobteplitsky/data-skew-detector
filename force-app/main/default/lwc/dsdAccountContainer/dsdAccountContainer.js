@@ -10,12 +10,11 @@ import getAccountReportId from '@salesforce/apex/DSD_UtilityFunctions.getAccount
 export default class DsdAccountContainer extends LightningElement { 
 	error;
 	progress = 0;
-	fillPrcent = 0;
 	totalRecsToProcess;
+	accountSettingsWired;
+	accountSettings;
 	batchObject;
 	batchStatus;
-	accountSettingsWired;
-	@track accountSettings;
 	isBatchCompleted;
 	isBatchAborted;
 	isBatchRunning;
@@ -35,19 +34,15 @@ export default class DsdAccountContainer extends LightningElement {
 	progressRingVariant;
 
 	connectedCallback(){
-		console.log('connectedCallback');
-
 		this.getBatchStatus()
 			.then(() =>{
 				if(this.batchObject == undefined) return;
-				console.log('connectedCallback batchObject: ' + JSON.stringify(this.batchObject));
 				if(this.isBatchRunning) this.handleRun(false);
 			})
 	}
 
 	@wire(getAccountSettingsWrapped)
 	getAccountSettings(value){
-		console.log('getAccountSettings');
 		this.accountSettingsWired = value;
 		const {data, error} = value;
 		if(data){
@@ -56,6 +51,8 @@ export default class DsdAccountContainer extends LightningElement {
 			this.parentObjectCount = data.parentObjectCount;
 			this.skewedRecCount = data.lastRunSkewedRecCount;
 			this.lastRunStartTime = data.lastRunStartTime;
+			this.skewThreshold = data.skewThreshold;
+			this.reportingThreshold = data.reportingThreshold;
 		}
 		if(error){
 			console.log('getAccountSettings error: ' + JSON.stringify(error));
@@ -64,7 +61,6 @@ export default class DsdAccountContainer extends LightningElement {
 
 	@wire(getAccountReportId)
 	getReportId({error, data}){
-		console.log('getReportId data: ' + JSON.stringify(data));
 		if(data) this.accountReportUrl = '/lightning/r/Report/' + data + '/view';
 	}
 
@@ -93,7 +89,6 @@ export default class DsdAccountContainer extends LightningElement {
 				let jobItemsProcessed = this.batchObject.JobItemsProcessed;
 				let totalJobItems = this.batchObject.TotalJobItems;
 				this.progress = Math.round((jobItemsProcessed/totalJobItems) * 100);
-				
 				if(this.isBatchCompleted) this.finishRun();
 			})
 			.catch(error => {
@@ -170,28 +165,25 @@ export default class DsdAccountContainer extends LightningElement {
 	}
 
 	handleSaveSettings(){
-		console.log('reportingThreshold: ' + this.reportingThreshold);
-		this.accountSettings.skewThreshold = this.skewThreshold;
 		this.accountSettings.reportingThreshold = this.reportingThreshold;
-		
+		this.accountSettings.skewThreshold = this.skewThreshold;
 		saveAccountSettings({ accountSettings: JSON.stringify(this.accountSettings)})
 			.then(result => {
+				console.log('saveAccountSettings result: ' + result);
 				this.showSettings = false;
-				console.log('result: ' + result);
+				this.toggleToast(result);
 				if(result){
-					this.showSaveSuccess = true;
-					this.showSaveError = false;
-
 					// eslint-disable-next-line @lwc/lwc/no-async-operation
 					this._interval = setInterval(() => { 
 						this.showSaveSuccess = false;
 					}, 3000);
 				}
-				else{
-					this.showSaveError = true;
-					this.showSaveSuccess = false;
-				}
 			});
+	}
+
+	toggleToast(success){
+		this.showSaveSuccess = success;
+		this.showSaveError = !success;
 	}
 
 	handleToggleSettings(){

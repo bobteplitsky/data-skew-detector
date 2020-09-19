@@ -125,7 +125,7 @@
 	</div>
 	<!-- end main UI -->
 
-	<br />
+	<!-- settings modal -->
 	<template if:true={showSettings}>
 		<div>
 			<section role="dialog" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -172,7 +172,9 @@
 			<div class="slds-backdrop slds-backdrop_open"></div>
 		</div>
 	</template>
+	<!-- end settings modal -->
 
+	<!-- scan confirm modal -->
 	<template if:true={showScanConfirm}>
 		<div>
 			<section role="dialog" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -203,7 +205,9 @@
 			<div class="slds-backdrop slds-backdrop_open"></div>
 		</div>
 	</template>
+	<!-- end scan confirm modal -->
 
+	<!-- abort scan confirm modal -->
 	<template if:true={showAbortConfirm}>
 		<div>
 			<section role="dialog" aria-labelledby="modal-heading-01" aria-modal="true"
@@ -234,5 +238,5 @@
 			<div class="slds-backdrop slds-backdrop_open"></div>
 		</div>
 	</template>
-	<br><br>
+	<!-- end abort scan confirm modal -->
 </template>
